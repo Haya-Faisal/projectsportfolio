@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tessera</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Typography & Spacing */
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Layout Sections */
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+
+        /* Lists */
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* Code Blocks - Matching the reference site */
+        pre {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 4px solid #ddd;
+        }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #d63384; }
+
+        /* Burgundy Accent for Key Items */
+        .burgundy { color: #800020; }
+        .tag { display: inline-block; background: #f9f2f4; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #800020;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(128, 0, 32, 0.08);
+    border-radius: 6px;
+    border: 1px solid rgba(128, 0, 32, 0.15);
+    transition: all 0.2s ease;
+}
+.project-btn:hover {
+    background-color: rgba(128, 0, 32, 0.12);
+    text-decoration: none;
+}
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Tessera</h1>
+        <p>A collaborative, grid-based drawing application featuring real-time symmetry, WebSocket updates, and persistent artwork storage.</p>
+    </header>
+
+    <main>
+        <!-- Add this RIGHT AFTER the <h1> tag in your existing code -->
+        <div class="project-links">
+            <a href="https://github.com/Haya-Faisal/dynamicwebdev/tree/main/finalproject" class="project-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="http://159.203.105.25:3000/gallery" class="project-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Project
+            </a>
+        </div>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Enabled 84 users to draw simultaneously on a shared canvas with real-time visual feedback and automatic symmetrical pattern generation.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Full-Stack Developer, Systems Architect</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>Node.js, Express, p5.js, Vanilla JS, HTML5 Canvas, Socket.io, File System API</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>Nov 2025 - Dec 2025</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Features</h2>
+
+            <h3>Tile Gallery System</h3>
+            <ul>
+                <li><strong>Dynamic Grid Layout:</strong> 12×7 configuration (84 total tiles) generated programmatically.</li>
+                <li><strong>Tile Persistence:</strong> Artwork saved as Base64 strings in JSON metadata and JPEG/PNG files.</li>
+                <li><strong>Real-time Updates:</strong> Optional <a href="https://socket.io/">Socket.io</a> WebSocket synchronization for multi-user collaboration.</li>
+                <li><strong>Rich Metadata:</strong> Each tile stores position, color palette, symmetry level, and timestamp.</li>
+            </ul>
+
+            <h3>Interactive Drawing Engine</h3>
+            <ul>
+                <li><strong>Geometric Symmetry:</strong> p5.js-powered engine with configurable symmetry levels (3-12 folds).</li>
+                <li><strong>Color System:</strong> 8 preset drawing colors & 7 background options.</li>
+                <li><strong>Mirror Drawing:</strong> Mouse strokes are mirrored across multiple symmetrical axes in real-time.</li>
+            </ul>
+
+            <h3>Data Management & Architecture</h3>
+            <ul>
+                <li><strong>Storage:</strong> Canvas drawings saved as Base64 JPEGs in <code>/public/tiles/</code> as <code>tile-&#123;id&#125;.jpg</code>.</li>
+                <li><strong>Indexing:</strong> Tiles uniquely identified by ID (1-84) with JSON metadata for quick loading.</li>
+                <li><strong>API-First Server:</strong> Express.js backend with RESTful endpoints for all tile operations.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>Server Architecture (Express.js)</h3>
+            <p>Using Express.js the server fetches all tiles/specific tiles, saves the drawings, removes the drawings and calls a tile image if it has been previously saved.</p>
+            <pre><code>// Core server structure
+const app = express();
+app.use(express.static('public'));
+app.use(express.json({ limit: '10mb' }));
+
+// API endpoints
+app.get('/api/tiles', getExistingTiles);
+app.get('/api/tiles/:id', getSpecificTile);
+app.post('/api/tiles/:id', saveTileImage);
+app.delete('/api/tiles/:id', deleteTileImage);
+app.use('/tiles', express.static(TILES_DIR));</code></pre>
+
+            <h3>Symmetry Drawing Algorithm (p5.js)</h3>
+            <p>The geometric patterns are created using the p5.js library. The system works by taking a user's mouse strokes and automatically replicating them across multiple symmetrical sections.</p>
+            <pre><code>function draw() {
+    translate(width / 2, height / 2);
+
+    if (mouseIsPressed) {
+        for (let i = 0; i < symmetry; i++) {
+            rotate(radians(angle));
+            stroke(currentColor);
+            line(mx, my, pmx, pmy);
+
+            push();
+            scale(1, -1);
+            line(mx, my, pmx, pmy);
+            pop();
+        }
+    }
+}</code></pre>
+
+            <h3>Frontend State Management</h3>
+            <pre><code>// Tile state management
+const tileState = {
+    id: number,
+    artwork: string | null, // Base64 image data
+    preview: string | null, // Thumbnail version
+    colors: string[], // Used colors
+    symmetry: number, // Symmetry level
+    lastModified: string, // ISO timestamp
+    position: { row, col } // Grid position
+};</code></pre>
+        </section>
+
+        <section>
+            <h2>Performance Optimizations</h2>
+            <ul>
+                <li><strong>Image Optimization:</strong> Canvas images converted to compressed JPEG; thumbnails generated for gallery display.</li>
+                <li><strong>Efficient Caching:</strong> Tile metadata cached in browser's local storage for fast gallery loads.</li>
+                <li><strong>Lazy Loading:</strong> Gallery images loaded on-demand as the user scrolls.</li>
+                <li><strong>Responsive Grid:</strong> CSS Grid and Flexbox for a layout that adapts to all screen sizes.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>System Data Flow</h2>
+            <pre><code>User Action → Frontend → Backend → Storage → Update All Clients
+    ↓           ↓          ↓         ↓            ↓
+Draw on tile → tile.js → POST /api/tiles/:id → Save to tiles.json → Socket.io broadcast → Update gallery.js</code></pre>
+        </section>
+
+        <section>
+            <h2>Challenges & Solutions</h2>
+            <h3>Challenge: Cross-browser Canvas Compatibility</h3>
+            <p><strong>Solution:</strong> Standardized on the p5.js library which handles context differences and provides consistent rendering fallbacks.</p>
+
+            <h3>Challenge: Handling Large Base64 Strings</h3>
+            <p><strong>Solution:</strong> Implemented a 10MB limit on Express.js JSON parsing and used JPEG compression over PNG for canvas data.</p>
+
+            <h3>Challenge: Image Sizing in the Gallery Grid</h3>
+            <p><strong>Solution:</strong> Used CSS <code>object-fit: contain</code> and fixed aspect-ratio containers to ensure consistent, non-distorted previews.</p>
+        </section>
+
+        <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Vanilla JavaScript</span>
+                <span class="tag">p5.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">Socket.io</span>
+                <span class="tag">File System (JSON/JPEG)</span>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Simple script for back button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // If the page wasn't opened from another page in this session, redirect to a portfolio home page
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "/"; // Change to your actual portfolio homepage URL
+                backLink.textContent = "← Back to Portfolio";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Chorus Bot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        .project-links { display: flex; gap: 1rem; margin: 1rem 0 2rem 0; flex-wrap: wrap; }
+        .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #800020; font-size: 0.95rem; padding: 0.5rem 1rem; background-color: rgba(204, 0, 0, 0.08); border-radius: 6px; border: 1px solid rgba(204, 0, 0, 0.151); transition: all 0.2s ease; }
+        .project-link:hover { background-color: rgba(204, 0, 0, 0.08); text-decoration: none; }
+        
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+        
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        pre { background-color: #f5f5f5; border-radius: 6px; padding: 1.2rem; margin: 1.5rem 0; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid #ddd; }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #d63384; }
+        
+        .tag { display: inline-block; background: rgba(204, 0, 0, 0.08); color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        
+        @media (max-width: 768px) { body { padding: 30px 20px; } h1 { font-size: 2rem; } .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; } .project-links { gap: 0.75rem; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>One Chorus Bot</h1>
+        
+        <div class="project-links">
+            <a href="https://editor.p5js.org/Haya-Faisal/sketches/PNpHmK-xb" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> View Code
+            </a>
+        </div>
+        
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Created a fully voice-driven AI conversation experience with real-time speech processing and poetic response generation.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>AI Systems Developer, Speech Processing Engineer</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>Transformers.js, ONNX Runtime, Web Audio API, p5.js</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>Oct 2025</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Core Features</h2>
+
+            <h3>Speech-to-Text (STT) Processing</h3>
+            <ul>
+                <li><strong>Real-time Audio Transcription:</strong> Whisper Tiny English model (ONNX).</li>
+                <li><strong>Voice Activity Detection:</strong> Volume-based with configurable threshold (0.05).</li>
+                <li><strong>WebAudio API Integration:</strong> Microphone capture and audio processing.</li>
+                <li><strong>MediaRecorder Implementation:</strong> Reliable audio chunking and buffering.</li>
+            </ul>
+
+            <h3>AI Language Generation</h3>
+            <ul>
+                <li><strong>Transformer-based Chat Model:</strong> SmolLM2-1.7B-Instruct for poetic responses.</li>
+                <li><strong>Conversation History Management:</strong> System prompt for breakup poetry generation.</li>
+                <li><strong>Token Streaming:</strong> Real-time response generation with callback functions.</li>
+                <li><strong>Context-aware Dialogue:</strong> Maintains conversation history across interactions.</li>
+            </ul>
+
+            <h3>Text-to-Speech (TTS) Synthesis</h3>
+            <ul>
+                <li><strong>Neural Voice Synthesis:</strong> Kokoro-82M-v1.0 ONNX model.</li>
+                <li><strong>Multi-voice Support:</strong> "af_bella" as default voice selection.</li>
+                <li><strong>Audio Buffer Generation:</strong> 24kHz sample rate for natural-sounding speech.</li>
+                <li><strong>WebAudio Playback:</strong> Proper context management and cleanup.</li>
+            </ul>
+
+            <h3>Visual Voice Feedback System</h3>
+            <ul>
+                <li><strong>Dynamic Mandala Visualization:</strong> 8 independently animated components.</li>
+                <li><strong>Voice-reactive Animation:</strong> Triggered during user speech and AI response.</li>
+                <li><strong>Parameter Modulation:</strong> Based on conversation state and audio activity.</li>
+                <li><strong>Procedural Animation:</strong> Noise-based parameter variation.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>System State Management</h3>
+            <pre><code>// Three-state conversation machine
+const STATES = {
+  IDLE: 0,           // Waiting for user input
+  LISTENING: 1,      // Recording and processing audio
+  PROCESSING: 2      // AI generation and TTS synthesis
+};
+
+// Audio processing flags
+let isUserSpeaking = false;    // Volume-based detection
+let isTTSReady = false;        // Model loading status
+let statusMessage = "";        // User feedback display</code></pre>
+
+            <h3>Model Loading Pipeline</h3>
+            <pre><code>async function loadModels() {
+  // 1. Load STT (Whisper Tiny)
+  transcriber = await pipeline("automatic-speech-recognition",
+                              "onnx-community/whisper-tiny.en",
+                              { device: "webgpu" });
+
+  // 2. Load LLM (SmolLM2-1.7B)
+  generator = await pipeline("text-generation",
+                            "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+                            { device: "webgpu", dtype: "q4f16" });
+
+  // 3. Load TTS (Kokoro)
+  const { KokoroTTS } = await import("kokoro-js");
+  ttsModel = await KokoroTTS.from_pretrained(
+    "onnx-community/Kokoro-82M-v1.0-ONNX",
+    { dtype: "fp32", device: "webgpu" }
+  );
+
+  // 4. Load available voices
+  voices = await ttsModel.voices;
+}</code></pre>
+
+            <h3>Conversation Processing Flow</h3>
+            
+                <pre><code>User Speech → Audio Recording → Volume Detection → Transcription →
+    ↓           ↓                ↓                  ↓
+Visual Feedback → MediaRecorder → FFT Analysis → Whisper Model →
+    ↓                                            ↓
+AI Processing → History Update → LLM Generation → Token Streaming →
+    ↓                                            ↓
+TTS Synthesis → Voice Selection → Audio Generation → Playback →
+    ↓                                            ↓
+Visual Feedback → Conversation Loop → User Response</code></pre>
+            
+
+            <h3>Conversation History Management</h3>
+            <pre><code>// System prompt defines AI personality
+let history = [{
+  role: "system",
+  content: "You will respond in a one chorus breakup poetry."
+}];
+
+// Conversation flow management
+async function processWithAI(userInput) {
+  // 1. Add user message to history
+  history.push({ role: "user", content: userInput });
+
+  // 2. Prepare messages for generation
+  const messages = history.slice();  // Copy to avoid mutation
+
+  // 3. Generate response with streaming
+  let aiResponse = "";
+  const streamer = new TextStreamer(generator.tokenizer, {
+    skip_prompt: true,
+    callback_function: (token) => {
+      aiResponse += token;  // Append tokens as they arrive
+    },
+  });
+
+  // 4. Execute generation
+  await generator(messages, {
+    max_new_tokens: 128,    // Limit response length
+    temperature: 1,         // Creative but focused
+    streamer,               // Enable token streaming
+  });
+
+  // 5. Store response and trigger TTS
+  history.push({ role: "assistant", content: aiResponse });
+  await generateSpeech(aiResponse);
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Performance Characteristics</h2>
+
+            <h3>Model Loading Performance</h3>
+            <ul>
+                <li><strong>Whisper Tiny:</strong> ~50MB download, loads in ~5-10 seconds.</li>
+                <li><strong>SmolLM2-1.7B:</strong> ~1GB quantized, loads in ~20-30 seconds.</li>
+                <li><strong>Kokoro TTS:</strong> ~80MB, loads in ~10-15 seconds.</li>
+                <li><strong>Total Load Time:</strong> ~35-55 seconds with parallel loading optimizations.</li>
+            </ul>
+
+            <h3>Inference Performance</h3>
+            <ul>
+                <li><strong>STT Latency:</strong> ~500-1000ms for 5-second audio clips.</li>
+                <li><strong>LLM Generation:</strong> ~2000-3000ms for 128-token responses.</li>
+                <li><strong>TTS Synthesis:</strong> ~1000-1500ms for average response length.</li>
+                <li><strong>Total Response Time:</strong> ~3500-5500ms end-to-end.</li>
+            </ul>
+
+            <h3>Memory Usage</h3>
+            <ul>
+                <li><strong>Model Weights:</strong> ~1.2GB total (GPU memory).</li>
+                <li><strong>Audio Buffers:</strong> ~5-10MB for recording and synthesis.</li>
+                <li><strong>Canvas Memory:</strong> 800×600×4 = ~1.9MB.</li>
+                <li><strong>JavaScript Heap:</strong> ~50-100MB during active processing.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Development Challenges & Solutions</h2>
+
+            <h3>Challenge: Cross-browser Audio Compatibility</h3>
+            <p><strong>Solution:</strong> Implemented comprehensive AudioContext fallbacks (`webkitAudioContext`) and proper suspension/resume handling.</p>
+
+            <h3>Challenge: Large Model Loading Times</h3>
+            <p><strong>Solution:</strong> Progressive loading with status updates and quantized model variants (q4f16) for reduced size.</p>
+
+            <h3>Challenge: Real-time Audio Processing Latency</h3>
+            <p><strong>Solution:</strong> Chunk-based recording with overlapping processing and volume-based voice activity detection.</p>
+
+            <h3>Challenge: Conversation State Management</h3>
+            <p><strong>Solution:</strong> Three-state machine (idle/listening/processing) with clear transitions and user feedback.</p>
+        </section>
+
+        <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">Transformers.js</span>
+                <span class="tag">ONNX Runtime</span>
+                <span class="tag">Web Audio API</span>
+                <span class="tag">p5.js</span>
+                <span class="tag">Whisper (Tiny)</span>
+                <span class="tag">SmolLM2-1.7B</span>
+                <span class="tag">Kokoro TTS</span>
+                <span class="tag">WebGPU</span>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "/";
+                backLink.textContent = "← Back to Portfolio";
+            }
+        });
+    </script>
+</body>
+</html>

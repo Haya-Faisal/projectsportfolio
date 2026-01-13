@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookflix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Typography & Spacing */
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Project Links */
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+            flex-wrap: wrap;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #800020;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(204, 0, 0, 0.08);
+            border-radius: 6px;
+            border: 1px solid rgba(204, 0, 0, 0.08);
+            transition: all 0.2s ease;
+        }
+        .project-link:hover {
+            background-color: rgba(204, 0, 0, 0.08);
+            text-decoration: none;
+        }
+
+        /* Layout Sections */
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+
+        /* Lists */
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* Code Blocks */
+        pre {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 4px solid #ddd;
+        }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #d63384; }
+
+        /* Tech Tags */
+        .tag { display: inline-block; background: #fff0f0; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-links { gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Bookflix </h1>
+        
+        <!-- Project Links -->
+        <div class="project-links">
+            <a href="https://github.com/Haya-Faisal/bookflix/tree/main" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Github
+            </a>
+            <a href="http://159.203.105.25:8080/" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Project
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Created an immersive book discovery experience with AI-generated summaries and 3D visualization, reducing search-to-insight time by 60%.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Full-Stack Developer, AI Integration Specialist</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>Node.js, Express, p5.js, Ollama LLM, Google Books API, Vanilla JS</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>Sept 2025 - Dec 2025</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Features</h2>
+
+            <h3>Interactive 3D Visualization System</h3>
+            <ul>
+                <li><strong>p5.js 3D Engine:</strong> Dynamic floating box animations with real-time user interaction.</li>
+                <li><strong>Object Pooling System:</strong> Manages up to 600 animated boxes with efficient lifecycle management.</li>
+                <li><strong>Spatial Partitioning Grid:</strong> Optimizes neighbor detection and collision performance (60px grid cells).</li>
+                <li><strong>Physics Simulation:</strong> Wave propagation, noise-based movement, and neighbor influence algorithms.</li>
+            </ul>
+
+            <h3>Book Search & Discovery Platform</h3>
+            <ul>
+                <li><strong>Google Books API Integration:</strong> Full-volume search capabilities with rich metadata.</li>
+                <li><strong>Real-time Typeahead Suggestions:</strong> Showing covers, authors, and ratings as you type.</li>
+                <li><strong>Multi-page Navigation Flow:</strong> Search → details → AI analysis → recommendations.</li>
+                <li><strong>Genre-based Discovery:</strong> Curated Goodreads genre links for exploration.</li>
+            </ul>
+
+            <h3>AI-Powered Content Analysis</h3>
+            <ul>
+                <li><strong>Ollama LLM Integration:</strong> Book summaries using multiple models (Llama 2, Qwen).</li>
+                <li><strong>Intelligent Recommendations:</strong> Based on user preferences and book characteristics.</li>
+                <li><strong>Dynamic Content Generation:</strong> Formatted output with bold titles and author names.</li>
+            </ul>
+        </section>
+
+         <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript (ES6+)</span>
+                <span class="tag">p5.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">Ollama LLM</span>
+                <span class="tag">Google Books API</span>
+                <span class="tag">LocalStorage API</span>
+                <span class="tag">Google Fonts</span>
+            </div>
+            
+            <h3 style="margin-top: 1.5rem;">Performance Features</h3>
+            <ul>
+                <li><strong>Object Pooling:</strong> Efficient memory management for 3D objects</li>
+                <li><strong>Spatial Partitioning:</strong> Grid-based optimization for collision detection</li>
+                <li><strong>Debounced API Calls:</strong> 300ms delay to reduce external requests</li>
+                <li><strong>Frame Skipping:</strong> Adaptive rendering under heavy load</li>
+                <li><strong>Progressive Enhancement:</strong> Graceful degradation on lower-end devices</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>Backend Architecture (Express.js + Ollama)</h3>
+            <pre><code>// Core server structure
+const express = require('express');
+const ollama = require('ollama');
+
+const app = express();
+app.use(express.json());
+app.use(express.static('public'));
+
+// API endpoints
+app.post('/api/summary', generateBookSummary);
+app.post('/api/recommend', getBookRecommendations);
+app.get('/api/tags', getAvailableModels);
+app.get('/api/books/search', searchBooks);
+
+// Ollama integration for AI features
+async function generateBookSummary(req, res) {
+    const { bookTitle } = req.body;
+    const response = await ollama.generate({
+        model: 'llama2',
+        prompt: `Write a detailed summary of the book "${bookTitle}"...`
+    });
+    res.json(response);
+}</code></pre>
+
+            <h3>Data Flow Architecture</h3>
+                <pre><code>User Search → Google Books API → Book Selection →
+LocalStorage Storage → Page Navigation →
+Ollama API Calls → AI Content Generation →
+Formatted Display → User Interaction</code></pre>
+            
+
+            <h3>Performance-Optimized 3D Engine</h3>
+            <pre><code>// Performance optimizations in sketch.js
+let boxPool = []; // Object pool for boxes
+let grid = {};    // Spatial partitioning grid
+let gridSize = 60;// Optimal grid cell size
+
+// Frame skipping for heavy loads
+const heavyLoad = boxes.length > 300;
+if (heavyLoad && frameCounter % 2 !== 0) {
+    timeOffset += waveSpeed;
+    return;
+}</code></pre>
+
+            <h3>Client-Side Data Management</h3>
+            <pre><code>// localStorage data structure
+const bookData = {
+    selectedBook: {
+        id: string,
+        title: string,
+        authors: string[],
+        coverImage: string,
+        rating: { average: number, count: number },
+        purchaseLinks: object,
+        description: string,
+        volumeInfo: object
+    },
+    searchQuery: string
+};
+
+// Session management
+localStorage.setItem('selectedBook', JSON.stringify(bookData));</code></pre>
+        </section>
+
+        <section>
+            <h2>AI Integration & Processing</h2>
+            
+            <h3>Ollama Model Configuration</h3>
+                <pre><code>Available Models:
+- llama2: General purpose, good for summaries
+- mistral: Balanced performance
+- codellama: Code-focused, alternative option
+
+// Prompt engineering
+const summaryPrompt = `Write a detailed summary of the book "${bookTitle}"
+including main themes, characters, and plot points.`;</code></pre>
+            
+
+            <h3>AI Response Formatting</h3>
+            <pre><code>// Format AI responses for display
+function formatRecommendations(recommendationsText) {
+    // Apply bold formatting to book titles and authors
+    return text.replace(/"([^"]+)" by ([^—-]+?)(?= - |\. |\n|$)/g,
+        '<strong>"$1" by $2</strong>');
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Challenges & Solutions</h2>
+            
+            <h3>Challenge: Real-time Search Suggestions</h3>
+            <p><strong>Solution:</strong> Used debouncing (300ms) and efficient DOM updates to show suggestions without overwhelming the API or UI.</p>
+
+            <h3>Challenge: AI Response Formatting</h3>
+            <p><strong>Solution:</strong> Created regex-based formatting functions to consistently bold book titles and authors in AI-generated content.</p>
+
+            <h3>Challenge: Large AI Models</h3>
+            <p><strong>Solution:</strong> Use <code>qwen2.5:0.5b</code> for faster replies with a fallback to larger models when quality is prioritized.</p>
+        </section>
+
+       
+
+        <section>
+            <h2>Deployment Architecture</h2>
+            
+                <pre><code>Single-Server Deployment:
+Node.js + Express → Static Files + API Routes
+    ↓
+Ollama Service (Local or Remote)
+    ↓
+Client Browser (p5.js + API Calls)
+    ↓
+External Services (Google Books, Retailers)</code></pre>
+           
+        </section>
+
+    </main>
+
+    <script>
+        // Simple script for back button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update project links with your actual URLs
+            const githubLink = document.querySelector('a[href*="github.com/yourusername"]');
+            const demoLink = document.querySelector('a[href*="your-bookflix-demo-url.com"]');
+            
+            // If the page wasn't opened from another page in this session
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "/"; // Change to your actual portfolio homepage URL
+                backLink.textContent = "← Back to Portfolio";
+            }
+        });
+    </script>
+</body>
+</html>

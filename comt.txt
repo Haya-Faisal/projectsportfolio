@@ -1,0 +1,142 @@
+<!-- <article class="meg-and-mariah">
+            <a class="title" href="/04/a-shimmering/">A Shimmering</a>
+            <a class="description" href="/04/a-shimmering/">
+                <img src="/04/assets/20211128_virginiabeach.webp"
+                    alt="Water the color of bottle green moves gently downstream.">
+                <p>That year we communicated mostly in&nbsp;light. </p>
+            </a>
+            <p class="author">
+                Meg Miller / Mariah Barden Jones
+            </p>
+        </article> -->
+
+        
+
+
+        <!-- <article class="chloe">
+            <a class="title" href="/04/answered-interruptions/">Answered Interruptions</a>
+            <a class="description" href="/04/answered-interruptions/">
+                <svg viewBox="-36.61 0 177.80 6356.97" preserveAspectRatio="none">
+                    <polygon
+                        points="117.02 3039.34 99.00 3108.62 126.36 3109.82 124.49 3207.72 94.46 3221.03 104.54 3273.52 121.17 3287.99 120.76 3315.41 97.49 3321.27 84.74 3456.72 136.73 3577.77 135.11 3638.45 105.39 3648.25 95.57 3703.26 135.06 3758.81 134.86 5230.25 121.60 5230.25 121.80 5265.49 135.06 5265.49 133.90 6356.47 55.07 6356.47 71.80 5281.76 5.76 5244.02 -35.76 4331.57 35.34 4126.02 61.99 4114.69 25.66 4068.47 23.74 3947.47 66.40 3917.38 78.98 3894.56 57.27 3877.04 32.57 3726.63 67.18 3601.72 39.66 3593.85 39.66 3576.74 68.74 3561.93 80.54 3474.03 41.22 3463.86 39.91 3429.91 49.09 3388.91 18.42 3375.50 64.82 3291.76 14.48 3066.92 56.59 3057.82 57.34 2354.82 73.77 2331.49 35.30 2229.37 66.40 2229.37 81.00 2183.91 80.17 2133.15 47.90 2133.97 87.07 2059.04 59.14 2059.04 58.59 1984.88 90.59 1990.80 90.40 1876.57 44.02 1798.62 110.29 1495.11 56.69 1320.91 75.49 1057.64 20.68 887.59 113.44 671.77 55.96 598.56 52.98 0.50 133.73 0.50 134.69 1264.57 73.84 1264.57 73.84 1323.13 134.69 1323.13 134.69 1631.54 106.57 1690.06 140.35 2032.62 115.14 2142.06 96.98 2162.82 110.63 2179.11 90.43 2185.91 77.33 2417.29 95.23 2432.04 93.90 2502.01 81.36 2502.01 93.14 2636.57 64.83 2982.84 64.83 3047.43 77.85 3047.43 73.79 3038.04 117.02 3039.34">
+                    </polygon>
+                </svg>
+            </a>
+            <p class="author">
+                Chloé Desaulles
+            </p>
+        </article> -->
+        
+
+
+
+        <!-- <article class="ahana-and-jeanette">
+            <a class="title" href="/04/cavity/">cavity!</a>
+            <div class="description">
+                <a href="/04/cavity/">
+                    <svg viewBox="0 0 294 299" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M56.5 285V294.5L50 287C50 287 52.5 283 51 279.5L50 276V272V262L46 252.5L48 247V239C52.5122 232.435 54.2426 228.602 56 221.5L62 218C65.119 213.959 65.3547 211.136 65.5 206C70.6409 203.879 73.5032 202.627 78 198.5C80.6858 194.511 81.2038 192.156 82.5 188L88.5 184L89.5 180.5C92.9533 179.358 94.3641 178.145 96 175V162C98.9582 160.422 100.315 159.323 101.5 156.5V147L106.5 144L107.5 137.5L101.5 137L94 142C84.0416 140.311 78.4584 140.473 68.5 142L59.5 148.5L53 150.5H42.5L21 154L10 160L0 158H8.5L20 152C24.6381 149.419 27.0125 147.804 30 144C34.0101 145.962 36.3079 146.398 40.5 146L46 144H54.5L70.5 137L78 126.5L88.5 123L96 115.5L106.5 114C111.112 109.021 113.341 105.756 120 103.5C122.406 99.2916 122.73 96.8596 123 92.5L132 78.5C131.86 73.4511 131.415 70.6942 129.5 66C131.066 62.2899 130.744 60.2101 129.5 56.5L125 47L123 41C113.683 33.0507 107.893 29.6124 97 24.5L87 4.5L88.5 0L108 15L135 37L161 56.5H165.5L178.5 64.5L197.5 69L206.5 66L209.5 60.5C213.927 59.8866 216.427 59.2912 221 56.5L229.5 57.5L241 56.5V54.5C242.282 53.6385 242.684 52.9584 243 51.5H245.5C249.775 48.547 251.918 46.5056 255.5 42.5H258L259.5 39.5C263.682 41.2603 266.41 41.3527 271.5 41L275.5 35L284 30.5L281.5 35L278 39.5C272.182 43.3978 270.12 46.4189 266 51.5C257.833 57.1115 254.518 61.1542 249.5 69L241 81V84.5H245.5H249.5C256.542 91.3716 260.217 95.3929 268.5 101.5C274.034 111.147 277.576 115.994 284 124.5L287 133.5L294 146.5L289.5 141.5L291 146.5L284 139L268.5 128L259.5 126L249.5 120C245.415 116.6 242.476 116.275 236 115L228.5 117C220.21 114.098 215.53 112.551 206.5 111.5L199.5 114C196.103 116.03 194.558 117.333 192.5 120L190 130.5C189.612 134.406 189.619 136.595 190 140.5L199.5 155C216.884 172.86 227.212 181.802 245.5 198L258 215L257 226L252 234V244.5L249 253.5L250.5 268.5L245.5 276.5L250.5 290.5L247 299L238.5 276.5L241.5 268.5L234 253.5L235.5 247.5L228.5 235.5V229.5L219 215V210L194 184.5L180.5 177.5L168 169C162.354 166.203 159.114 165.071 153 165L144.5 160L136.5 166.5L112.5 173L109.5 186H108L109.5 190.5L98.5 188C94.9031 189.6 94.2787 190.912 94 193.5L89.5 196.5C87.8666 201.775 87.4341 204.732 88 210L75.5 226V241C71.8171 241.141 70.066 241.908 67.5 244.5L68 262C68 262 63.5 263.5 64 269C64.5 274.5 63.5 279.5 63.5 279.5L56.5 285Z"
+                            fill="var(--accent)"></path>
+                    </svg>
+                    <p>One heart of disgust is the fear that we are not ourselves, or that we are not contained in
+                        the
+                        ways we think we are. At the dentist we arrive at this&nbsp;heart.
+                    </p>
+                </a>
+            </div>
+            
+        </article> -->
+        <!-- <article class="theo">
+            <a class="title" href="/04/new-legibility/">A New Legibility</a>
+            <div class="description">
+                <a href="/04/new-legibility/">
+                    <p>
+                        If a text moves or if you must act to read it—if you must make a choice or cope with change—how
+                        much
+                        easier does it become to&nbsp;focus?
+                    </p>
+                </a>
+            </div>
+            <p class="author">
+                Theo Ellin Ballew
+            </p>
+        </article> -->
+        <!-- <article class="jackie">
+            <a class="title" href="https://ifeelsomuchsha.me/">I feel so much shame</a>
+            <a class="description" href="https://ifeelsomuchsha.me/">
+                <img src="/04/assets/button.png" alt="A risograph-printed button that says 'Can you stay here too?'.">
+            </a>
+            <p class="author">
+                Jackie Liu
+            </p>
+        </article> -->
+
+        <!-- <article class="blair">
+            <a class="title" href="http://blairs.computer/">../documents/<br>files/<br>memories/<br>mydigitalhoard</a>
+
+            <a class="description" href="http://blairs.computer/">
+                <div class="stack">
+                    <div>
+                        <img src="/04/assets/IMG_0046.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_0241.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_0859.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_1163.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_7463.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_7587.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_9113.JPG" alt="A mostly hidden image">
+                    </div>
+                    <div>
+                        <img src="/04/assets/IMG_8745.JPG"
+                            alt="An image of a very cute dog sitting on a couch and tilting its head slightly.">
+                    </div>
+                </div>
+                <p>
+                    I want my computer to forget like I&nbsp;do.
+                </p>
+            </a>
+            <p class="author">
+                Blair Simmons
+            </p>
+        </article> -->
+
+
+
+        // {
+  //   url: "/04/a-shimmering/",
+  //   title: "A Shimmering",
+  // },
+  
+  
+  // {
+  //   url: "/04/nica-marimba/",
+  //   title: "Nica Marimba",
+  // },
+  // {
+  //   url: "/04/cavity/",
+  //   title: "cavity!",
+  // },
+  // {
+  //   url: "/04/new-legibility/",
+  //   title: "A New Legibility",
+  // },
+  // {
+  //   url: "https://ifeelsomuchsha.me/",
+  //   title: "I feel so much shame",
+  // },
+  // {
+  //   url: "http://blairs.computer/",
+  //   title: "../documents/&#8203;files/&#8203;memories/&#8203;mydigitalhoard",
+  // },

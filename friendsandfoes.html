@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends and Foes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        .project-links { display: flex; gap: 1rem; margin: 1rem 0 2rem 0; flex-wrap: wrap; }
+        .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #800020; font-size: 0.95rem; padding: 0.5rem 1rem; background-color: rgba(255, 107, 107, 0.08); border-radius: 6px; border: 1px solid rgba(255, 107, 107, 0.15); transition: all 0.2s ease; }
+        .project-link:hover { background-color: rgba(255, 107, 107, 0.12); text-decoration: none; }
+        
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+        
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        pre { background-color: #f5f5f5; border-radius: 6px; padding: 1.2rem; margin: 1.5rem 0; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid #ddd; }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #c80064; }
+        
+        .tag { display: inline-block; background: #ffeaea; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .lifecycle-box { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border-left: 4px solid #800020; }
+        
+        @media (max-width: 768px) { body { padding: 30px 20px; } h1 { font-size: 2rem; } .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; } .project-links { gap: 0.75rem; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Friends and Foes</h1>
+        
+        <div class="project-links">
+            <a href="https://editor.p5js.org/Haya-Faisal/sketches/T0ItP8Bzq" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Code
+            </a>
+        </div>
+        
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Created an interactive physics sandbox with real-time parameter manipulation and organic particle behavior simulation.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>p5.js, Tweakpane.js, Vanilla JavaScript</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>March 2025</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Core Features</h2>
+
+            <h3>Dynamic Particle Generation System</h3>
+            <ul>
+                <li><strong>Procedural Generation:</strong> Configurable spawn probability (0.01-0.5 per frame).</li>
+                <li><strong>Linear Emission:</strong> Distribution along adjustable X-axis bounds (-40 to 650px).</li>
+                <li><strong>Group-based Velocity:</strong> 14 distinct vertical speed presets (2-15 pixels/frame).</li>
+                <li><strong>Size Variation:</strong> Random diameters between 5px and adjustable maximum (5-30px).</li>
+            </ul>
+
+            <h3>Intelligent Particle Physics</h3>
+            <ul>
+                <li><strong>Target-seeking Algorithm:</strong> Damped attraction physics with 0.15 force strength.</li>
+                <li><strong>Spiral Motion:</strong> Combines random initial velocity with directional seeking.</li>
+                <li><strong>Size Decay Mechanism:</strong> Reduces particle diameter near targets (0.05px/frame decay).</li>
+                <li><strong>Arrival Detection:</strong> 5-pixel completion radius triggering particle removal.</li>
+            </ul>
+
+            <h3>Interactive Control System</h3>
+            <ul>
+                <li><strong>Real-time Parameter GUI:</strong> Tweakpane.js for live manipulation.</li>
+                <li><strong>Dual-mode Mouse Interaction:</strong> Probabilistic response (80/20 split):
+                    <ul>
+                        <li><strong>Target Setting (80%):</strong> Establishes new attractor point at cursor.</li>
+                        <li><strong>Velocity Reversal (20%):</strong> Inverts all particle motion directions.</li>
+                    </ul>
+                </li>
+                <li><strong>Dynamic Color Management:</strong> Controlled RGB variation (10-50 range).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>Particle Lifecycle Management</h3>
+            <div class="lifecycle-box">
+                <pre><code>// Three-phase particle management system
+1. GENERATION → 2. UPDATE → 3. CLEANUP
+   ↓              ↓            ↓
+Spawn Check → Physics Update → Arrival Check
+   ↓              ↓            ↓
+Color Assign → Size Decay → Memory Free</code></pre>
+            </div>
+
+            <h3>Core Simulation Loop</h3>
+            <pre><code>function draw() {
+  // 1. Clear canvas with light cream background (252, 245, 216)
+  background(252, 245, 216);
+
+  // 2. Update GUI parameter displays
+  updateGUI();
+
+  // 3. Generate new particles based on color array
+  for (let i = 0; i < colors.length; i++) {
+    if (random() < params.generationChance) {
+      // Spawn logic with color-based velocity assignment
+      circles.push(createParticle(i));
+    }
+  }
+
+  // 4. Update and render existing particles
+  for (let i = circles.length - 1; i >= 0; i--) {
+    circles[i].spiralMove();    // Physics update
+    circles[i].decsize();       // Visual update
+    circles[i].display();       // Rendering
+
+    // 5. Remove arrived particles
+    if (circles[i].isDone) {
+      circles.splice(i, 1);
+    }
+  }
+
+  // 6. Enforce particle limit (FIFO cleanup)
+  while (circles.length > 3000) {
+    circles.splice(0, 1);
+  }
+}</code></pre>
+
+            <h3>Spawn Position Calculation</h3>
+            <pre><code>// Linear interpolation along emission line
+let x = map(
+  i,                            // Current color index (0-19)
+  0,                            // Source range minimum
+  colors.length - params.linenumb, // Source range maximum (adjustable)
+  params.circlestart,           // Target range minimum (-40 to 60)
+  params.circlestop             // Target range maximum (450 to 650)
+);
+// y is always 0 (top of canvas)</code></pre>
+
+            <h3>Physics Integration</h3>
+            <pre><code>spiralMove() {
+  // 1. Calculate normalized direction vector to target
+  let dirX = this.targetxpos - this.x;
+  let dirY = this.targetypos - this.y;
+  let distance = sqrt(dirX * dirX + dirY * dirY);
+  dirX /= distance;  // Normalize X
+  dirY /= distance;  // Normalize Y
+
+  // 2. Apply attraction force (0.15 strength)
+  this.vel.x += dirX * 0.15;
+  this.vel.y += dirY * 0.15;
+
+  // 3. Apply velocity damping (0.99 factor)
+  this.vel.x *= 0.99;
+  this.vel.y *= 0.99;
+
+  // 4. Integrate position
+  this.x += this.vel.x;
+  this.y += this.vel.y;
+
+  // 5. Check arrival condition
+  if (distance < 5) {
+    this.isDone = true;
+  }
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Parameter Control System</h2>
+
+            <h3>GUI Parameter Definitions</h3>
+            <pre><code>const params = {
+  // Particle appearance
+  size: 15,                     // Maximum diameter (5-30px)
+  colorrandomness: 30,          // RGB variation range (10-50)
+
+  // Generation behavior
+  generationChance: 0.15,       // Spawn probability per color (0.01-0.5)
+  linenumb: 1,                  // Emission density divisor (1-10)
+
+  // Emission geometry
+  circlestart: -25,             // Left spawn bound (-40 to 60)
+  circlestop: 610               // Right spawn bound (450 to 650)
+};</code></pre>
+        </section>
+
+        <section>
+            <h2>Development Challenges & Solutions</h2>
+
+            <h3>Challenge: Particle Count Management</h3>
+            <p><strong>Solution:</strong> Implemented three-tier cleanup: arrival removal, FIFO limit enforcement, and performance-conscious maximum (3000).</p>
+
+            <h3>Challenge: Natural-looking Motion</h3>
+            <p><strong>Solution:</strong> Combined random initial velocities with target-seeking forces and velocity damping (0.99) for organic spiraling.</p>
+
+            <h3>Challenge: Performance at Scale</h3>
+            <p><strong>Solution:</strong> Optimized physics to 10 operations/particle, used efficient rendering primitives, and set conservative particle limits.</p>
+        </section>
+
+        <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">p5.js</span>
+                <span class="tag">Tweakpane.js</span>
+                <span class="tag">Canvas API</span>
+                <span class="tag">Vanilla JavaScript</span>
+                <span class="tag">Vector Physics</span>
+                <span class="tag">Particle Systems</span>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "/";
+                backLink.textContent = "← Back to Portfolio";
+            }
+        });
+    </script>
+</body>
+</html>
