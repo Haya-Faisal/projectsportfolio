@@ -1,157 +1,88 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta property="og:description"
-        content="Haya's Works" />
-    <meta name="description"
-        content="Haya's works" />
-    <title>
-        Haya's Works
-    </title>
+    <meta name="description" content="Haya's works" />
+    <title>Haya's Works</title>
     <link rel='stylesheet' href='common.css' />
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
-    <script src="sketch.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="sketch.js" defer type="text/javascript"></script>
 </head>
-
 <body>
+    <div class="header-spacer"></div>
+    
     <header>
-        <h2>
-            Haya Faisal
-        </h2>
-        <h1>
-            Born in Pakistan. 
-        </h1>
+        <h2>Haya Faisal</h2>
+        <h1>Born in Pakistan.</h1>
         <h1>Remade in Shanghai and New York.</h1>
         <h1>A constructor to fix bad graphics & build websites.</h1>
         <nav>
-            <a href='https://github.com/Haya-Faisal'>
-                Github
-            </a>
-            <a href='https://www.linkedin.com/in/haya-faisal/'>
-                LinkedIn
-            </a>
-            <a href="#">
-                Resume
-            </a>
+            <a href='https://github.com/Haya-Faisal'>Github</a>
+            <a href='https://www.linkedin.com/in/haya-faisal/'>LinkedIn</a>
+            <a href="#">Resume</a>
         </nav>
     </header>
-    <main>
-        <article class="Bookflix">
-            <a class="title" href="bookflix.html">Bookflix</a>
-            <a class="description" href="bookflix.html">
-                <div class="marimba">
-                    <div class="key"></div>
-                    <div class="key"></div>
-                    <div class="key"></div>
-                    <div class="key"></div>
-                    <div class="key"></div>
-                    <div class="key"></div>
-                    <div class="key"></div>
-                    <div class="key"></div>
-                </div>
-            </a>
-            <!-- <p class="author">
-                Alejandro Vega
-            </p> -->
-        </article>
-        <!-- eileen -->
-        <article class="Tessera">
-            <a class="title" href="tessera.html">Tessera</a>
-            <a class="description" href="tessera.html">
-                <pre>     _      _      _      _      _      _      _
-   _( )__ _( )__ _( )__ _( )__ _( )__ _( )__ _( )__
- _|     _|     _|     _|     _|     _|     _|     _|
-(_   _ (_   _ (_   _ (_   _ (_   _ (_   _ (_   _ (_
- |__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|
- |_     |_     |_     |_     |_     |_     |_     |_
-  _) _   _) _   _) _   _) _   _) _   _) _   _) _   _)
- |__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|
- _|     _|     _|     _|     _|     _|     _|     _|
-(_   _ (_   _ (_   _ (_   _ (_   _ (_   _ (_   _ (_
- |__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|
- |_     |_     |_     |_     |_     |_     |_     |_
-  _) _   _) _   _) _   _) _   _) _   _) _   _) _ _)
- |__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|__( )_|</pre>
-            </a>
-            <!-- <p class="author">
-                Reuben Son
-            </p> -->
-        </article>
+    
+    <div id="projects-container">
+    <div class="menu-wrapper">
+      <div class="hamburgcontainer" onclick="toggleMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+  
+      <div class="menu-items" id="menuItems">
+        <a href="bookflix.html">Bookflix</a>
+        <a href="tessera.html" >Tessera</a>
+        <a href="chorus.html">One Chorus Bot</a>
+        <a href="friendsandfoes.html">Friends and Foes</a>
+        <a href="rantitout.html">Rant it Out</a>
+      </div>
+    </div>
+    </div>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    const projectsContainer = document.getElementById('projects-container');
+    const menuWrapper = document.querySelector('.menu-wrapper');
 
-        <article class="rantitout" >
-            <a class="title" href="rantitout.html">Rant It Out</a>
-            <a href="rantitout.html" class="description">
-                <img src="/assets/rantitout.png">
-            </a>
-            <!-- <p class="author">
-                Blair Johnson / Luke Williams
-            </p> -->
-        </article>
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const viewportHeight = window.innerHeight;
         
-        <article class="friendsandfoes">
-            <a class="title" href="friendsandfoes.html">Friends and Foes</a>
-            <a class="description" href="friendsandfoes.html">
-                <svg viewBox="-36.61 0 177.80 6356.97" preserveAspectRatio="none">
-                    <polygon
-                        points="117.02 3039.34 99.00 3108.62 126.36 3109.82 124.49 3207.72 94.46 3221.03 104.54 3273.52 121.17 3287.99 120.76 3315.41 97.49 3321.27 84.74 3456.72 136.73 3577.77 135.11 3638.45 105.39 3648.25 95.57 3703.26 135.06 3758.81 134.86 5230.25 121.60 5230.25 121.80 5265.49 135.06 5265.49 133.90 6356.47 55.07 6356.47 71.80 5281.76 5.76 5244.02 -35.76 4331.57 35.34 4126.02 61.99 4114.69 25.66 4068.47 23.74 3947.47 66.40 3917.38 78.98 3894.56 57.27 3877.04 32.57 3726.63 67.18 3601.72 39.66 3593.85 39.66 3576.74 68.74 3561.93 80.54 3474.03 41.22 3463.86 39.91 3429.91 49.09 3388.91 18.42 3375.50 64.82 3291.76 14.48 3066.92 56.59 3057.82 57.34 2354.82 73.77 2331.49 35.30 2229.37 66.40 2229.37 81.00 2183.91 80.17 2133.15 47.90 2133.97 87.07 2059.04 59.14 2059.04 58.59 1984.88 90.59 1990.80 90.40 1876.57 44.02 1798.62 110.29 1495.11 56.69 1320.91 75.49 1057.64 20.68 887.59 113.44 671.77 55.96 598.56 52.98 0.50 133.73 0.50 134.69 1264.57 73.84 1264.57 73.84 1323.13 134.69 1323.13 134.69 1631.54 106.57 1690.06 140.35 2032.62 115.14 2142.06 96.98 2162.82 110.63 2179.11 90.43 2185.91 77.33 2417.29 95.23 2432.04 93.90 2502.01 81.36 2502.01 93.14 2636.57 64.83 2982.84 64.83 3047.43 77.85 3047.43 73.79 3038.04 117.02 3039.34">
-                    </polygon>
-                </svg>
-            </a>
-        </article>
-
-        <article class="chorus">
-            <a class="title" href="chorus.html">One Chorus Bot</a>
-            <div class="description">
-                <a href="chorus.html">
-                    <p>A technical meditation on digital deception, creating an endless journey where particles flow toward a summit
-                         that never arrives, mirroring how our attention is perpetually hijacked by interfaces designed to promise more 
-                         but deliver only more scrolling.
-                    </p>
-                </a>
-            </div>
-        </article>
-
+        const scrollTriggerDistance = viewportHeight;
         
-        <!-- <article class="maya">
-            <a class="title" href="https://pureinformation.stream/">Pure Information</a>
-            <div class="description">
-                <a href="https://pureinformation.stream/">
-                    <p><span>The meaning of</span> <span>MAYA</span><span> is the supernatural power wielded by
-                            gods and demons to produce illusions. Broadly:&nbsp;illusion.</span></p>
-                </a>
-            </div>
-            <p class="author">
-                Maya Man
-            </p>
-        </article> -->
-
+        const scrollProgress = Math.min(scrollY / scrollTriggerDistance, 1);
+        const easedProgress = Math.pow(scrollProgress, 0.9);
         
-    </main>
-    <a href='' id="link"></a>
-    <footer>
-        <h2>
-            Haya Faisal
-        </h2>
+        header.style.transform = `translateY(-${easedProgress * 400}%)`;
         
-
-        <nav>
-            <a href='https://github.com/Haya-Faisal'>
-                Github
-            </a>
-            <a href='https://www.linkedin.com/in/haya-faisal/'>
-                LinkedIn
-            </a>
-            <a href="#">
-                Resume
-            </a>
-        </nav>
-    </footer>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"3da31c73a4144a51bf6edcac5906ce4c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+        // Handle header and projects container visibility
+        if (scrollY >= scrollTriggerDistance) {
+            header.classList.add('at-top');
+            projectsContainer.classList.add('visible');
+            
+            // Trigger balls if needed
+            if (window.ballsReleased === false && typeof checkHeaderAndRelease === 'function') {
+                checkHeaderAndRelease();
+            }
+        } else {
+            header.classList.remove('at-top');
+            projectsContainer.classList.remove('visible');
+        }
+    
+        //  menu wrapper visibility 
+        if (scrollY > 900) {
+            if (menuWrapper) menuWrapper.classList.add('active');
+        } else {
+            if (menuWrapper) menuWrapper.classList.remove('active');
+        }
+    });
+});
+</script>
 </body>
-
 </html>
