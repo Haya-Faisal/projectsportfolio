@@ -19,7 +19,7 @@ const projectData = [
   {
     id: 2,
     title: "Tessera",
-    link: "Tessera.html",
+    link: "tessera.html",
   },
   {
     id: 3,
