@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="sketch.js" defer type="text/javascript"></script>
+    <script src="sketch.js"></script>
+    <!-- <script src="animation.js"></script> -->
 </head>
 <body>
-    <div class="header-spacer"></div>
+    
     
     <header>
+        <div class="header-spacer"></div>
+        <canvas id="animation-canvas"></canvas>
+
         <h2>Haya Faisal</h2>
         <h1>Born in Pakistan.</h1>
         <h1>Remade in Shanghai and New York.</h1>
@@ -24,6 +28,11 @@
             <a href='https://www.linkedin.com/in/haya-faisal/'>LinkedIn</a>
             <a href="./assets/resume.pdf">Resume</a>
         </nav>
+
+        <div class="scroll-indicator">
+        <p>Scroll to the bottom to explore projects</p>
+        <div class="arrow-down">↓</div>
+    </div>
     </header>
     
     <div id="projects-container">
@@ -54,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollY = window.scrollY || window.pageYOffset;
         const viewportHeight = window.innerHeight;
         
-        const scrollTriggerDistance = viewportHeight;
+        const scrollTriggerDistance = viewportHeight /3;
         
         const scrollProgress = Math.min(scrollY / scrollTriggerDistance, 1);
         const easedProgress = Math.pow(scrollProgress, 0.9);
@@ -76,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         //  menu wrapper visibility 
-        if (scrollY > 900) {
+        if (scrollY > 500) {
             if (menuWrapper) menuWrapper.classList.add('active');
         } else {
             if (menuWrapper) menuWrapper.classList.remove('active');
@@ -84,5 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<script src="animation.js"></script>
 </body>
 </html>
