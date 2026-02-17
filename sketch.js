@@ -2,6 +2,7 @@ let projects = [];
 let gravity = 0;
 let gravityTarget = 0.4;
 const GRAVITY_MAX = 1.0;
+let restitution = 0.85;
 let floorY;
 let wallsX;
 let hoveredProject = null;
@@ -98,8 +99,8 @@ function draw() {
 
       // Zero-G drift — random nudge when gravity is near zero
       if (gravity < 0.05) {
-        project.vx += random(-0.03, 0.03);
-        project.vy += random(-0.03, 0.03);
+        project.vx += random(-0.09, 0.09);
+        project.vy += random(-0.09, 0.09);
 
         // Cap speed so balls don't rocket off
         let speed = sqrt(project.vx * project.vx + project.vy * project.vy);
@@ -116,22 +117,26 @@ function draw() {
       // Floor
       if (project.y + project.radius > floorY) {
         project.y   = floorY - project.radius;
+        project.vy *= -restitution;
         project.vx *= 0.98;
       }
 
       // Ceiling
       if (project.y - project.radius < 0) {
         project.y   = project.radius;
+        project.vy *= -restitution;
       }
 
       // Left wall
       if (project.x - project.radius < wallsX) {
         project.x   = wallsX + project.radius;
+        project.vy *= -restitution;
       }
 
       // Right wall
       if (project.x + project.radius > width - wallsX) {
         project.x   = width - wallsX - project.radius;
+        project.vy *= -restitution;
       }
     }
 
@@ -157,14 +162,14 @@ function drawSpeedometer(cx, cy, r) {
   const endAngle   = TWO_PI;
   const totalArc   = PI;
 
-  // Dark backing so it's visible on white canvas
-  fill(20, 20, 20, 210);
-  noStroke();
-  rect(-r - 14, -r - 14, (r + 14) * 2, r + 52, 12);
-
   // Outer arc
   noFill();
-  stroke(255, 255, 255, 60);
+  let col = lerpColor(
+    color(222, 148, 160),
+    color(97,0,16),
+    needleVal
+  );
+  stroke(col);
   strokeWeight(1);
   arc(0, 0, r * 2, r * 2, startAngle, endAngle);
 
@@ -180,38 +185,25 @@ function drawSpeedometer(cx, cy, r) {
     let x2 = cos(angle) * r;
     let y2 = sin(angle) * r;
 
-    stroke(255, 255, 255, isMajor ? 200 : 90);
+    stroke(col, isMajor ? 200 : 90);
     strokeWeight(isMajor ? 1.5 : 0.8);
     line(x1, y1, x2, y2);
   }
 
-  // LOW / HIGH labels
-  fill(255, 255, 255, 120);
-  noStroke();
-  textSize(9);
-  textAlign(CENTER, CENTER);
-  text('LOW',  cos(startAngle) * (r - 22), sin(startAngle) * (r - 22));
-  text('HIGH', cos(endAngle)   * (r - 22), sin(endAngle)   * (r - 22));
-
-  // Coloured fill arc (mint → red)
-  let col = lerpColor(
-    color(100, 220, 180),
-    color(255, 80,  60),
-    needleVal
-  );
-  stroke(col);
-  strokeWeight(2);
-  noFill();
-  arc(0, 0, (r - 6) * 2, (r - 6) * 2,
-      startAngle,
-      startAngle + needleVal * totalArc);
+  // // LOW / HIGH labels
+  // fill(97,0,16, 120);
+  // noStroke();
+  // textSize(20);
+  // textAlign(CENTER, CENTER);
+  // text('<-',  cos(startAngle) * (r - 22), sin(startAngle) * (r - 22));
+  // text('->', cos(endAngle)   * (r - 22), sin(endAngle)   * (r - 22));
 
   // Needle
   let needleAngle = startAngle + needleVal * totalArc;
   let nx = cos(needleAngle) * (r - 10);
   let ny = sin(needleAngle) * (r - 10);
 
-  stroke(255);
+  stroke(97,0,16);
   strokeWeight(1.5);
   line(0, 0, nx, ny);
 
@@ -221,16 +213,16 @@ function drawSpeedometer(cx, cy, r) {
   circle(0, 0, 6);
 
   // Gravity value
-  fill(255, 255, 255, 180);
+  fill(97,0,16);
   noStroke();
-  textSize(10);
+  textSize(24);
   textAlign(CENTER, CENTER);
   text(nf(gravity, 1, 2), 0, 18);
 
   // Label
-  fill(255, 255, 255, 100);
-  textSize(8);
-  text('GRAVITY', 0, 30);
+  fill(97,0,16);
+  textSize(24);
+  text('GRAVITY', 0, 40);
 
   pop();
 }
