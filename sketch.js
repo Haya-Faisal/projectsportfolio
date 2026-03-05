@@ -150,11 +150,70 @@ function draw() {
     cursor(ARROW);
   }
 
-  drawSpeedometer(70, 90, 70);
+  drawSpeedometer(80, 120, 70);
+  drawKeyboardHint(50, 145,70)
 }
 
+function drawKeyboardHint(cx, cy, r) {
+  push();
+  
+  // Left arrow
+  let leftX = cx -20;
+  let leftY = cy;
+  let leftSize = 30;
+  
+  // Check if mouse is hovering over left arrow
+  let hoverLeft = dist(mouseX, mouseY, leftX, leftY) < leftSize / 2;
+  
+  // Background circle
+  if (hoverLeft) {
+    fill(97, 0, 16);
+    cursor(HAND);
+  } else {
+    fill(255, 255, 255);
+  }
+  stroke(97, 0, 16);
+  strokeWeight(1.5);
+  circle(leftX, leftY, leftSize);
+  
+  // Arrow symbol
+  fill(hoverLeft ? 255 : color(97, 0, 16));
+  noStroke();
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  text('←', leftX, leftY);
+  
+  // Right arrow
+  let rightX = cx + r + 20;
+  let rightY = cy;
+  let rightSize = 30;
+  
+  // Check if mouse is hovering over right arrow
+  let hoverRight = dist(mouseX, mouseY, rightX, rightY) < rightSize / 2;
+  
+  // Background circle
+  if (hoverRight) {
+    fill(97, 0, 16);
+    cursor(HAND);
+  } else {
+    fill(255, 255, 255);
+  }
+  stroke(97, 0, 16);
+  strokeWeight(1.5);
+  circle(rightX, rightY, rightSize);
+  
+  // Arrow symbol
+  fill(hoverRight ? 255 : color(97, 0, 16));
+  noStroke();
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  text('→', rightX, rightY);
+  
+  pop();
+}
 
 function drawSpeedometer(cx, cy, r) {
+  
   push();
   translate(cx, cy);
 
@@ -190,14 +249,6 @@ function drawSpeedometer(cx, cy, r) {
     line(x1, y1, x2, y2);
   }
 
-  // // LOW / HIGH labels
-  // fill(97,0,16, 120);
-  // noStroke();
-  // textSize(20);
-  // textAlign(CENTER, CENTER);
-  // text('<-',  cos(startAngle) * (r - 22), sin(startAngle) * (r - 22));
-  // text('->', cos(endAngle)   * (r - 22), sin(endAngle)   * (r - 22));
-
   // Needle
   let needleAngle = startAngle + needleVal * totalArc;
   let nx = cos(needleAngle) * (r - 10);
@@ -217,12 +268,13 @@ function drawSpeedometer(cx, cy, r) {
   noStroke();
   textSize(24);
   textAlign(CENTER, CENTER);
-  text(nf(gravity, 1, 2), 0, 18);
+  text(nf(gravity, 1, 2), 0, 28);
 
   // Label
   fill(97,0,16);
   textSize(24);
-  text('GRAVITY', 0, 40);
+  text('GRAVITY', 0, -85);
+  
 
   pop();
 }
@@ -285,6 +337,30 @@ function mousePressed() {
   } else {
     projects.forEach(p => p.isSelected = false);
     selectedProject = null;
+  }
+
+  let keyboardCx = 50;
+  let keyboardCy = 145;
+  let keyboardR = 70;
+  
+  let leftX = keyboardCx - 20;
+  let leftY = keyboardCy;
+  
+  let rightX = keyboardCx + keyboardR + 20;
+  let rightY = keyboardCy;
+  
+  // Click left arrow
+  if (dist(mouseX, mouseY, leftX, leftY) < 15) {
+    gravityTarget = max(gravityTarget - 0.05, 0);
+    needleTarget  = gravityTarget / GRAVITY_MAX;
+    return; // don't process ball clicks if we clicked an arrow
+  }
+  
+  // Click right arrow
+  if (dist(mouseX, mouseY, rightX, rightY) < 15) {
+    gravityTarget = min(gravityTarget + 0.05, GRAVITY_MAX);
+    needleTarget  = gravityTarget / GRAVITY_MAX;
+    return; // don't process ball clicks if we clicked an arrow
   }
 }
 
