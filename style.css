@@ -5,7 +5,9 @@
   --visible: 170;
   --background: #ffffff;
   
-  font-family: "Sugary", "Baloo 2", "Fredoka", "Bubblegum Sans", sans-serif;
+  font-family: "Crimson Pro", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   word-spacing: 0.3em;
   text-underline-offset: 3px;
   color: var(--accent);
@@ -43,7 +45,7 @@ header.at-top {
 /* Header content styles */
 header h1 {
   margin: 0;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 3rem;
   line-height: 1em;
@@ -60,7 +62,7 @@ header h2 {
   font-weight: 600;
   width: 100%;
   text-align: center;
-  font-family: "Helvetica", sans-serif;
+  /* font-family: "Helvetica", sans-serif; */
   margin-bottom: 20px;
 }
 
@@ -76,7 +78,7 @@ header nav a {
   color: var(--accent);
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Helvetica", sans-serif;
+  /* font-family: "Helvetica", sans-serif; */
 }
 
 /* Spacer to push content down */
@@ -241,7 +243,7 @@ header nav a {
 .scroll-indicator p {
   font-size: 0.9rem;
   text-transform: uppercase;
-  font-family: "Helvetica", sans-serif;
+  /* font-family: "Helvetica", sans-serif; */
   margin: 0;
   margin-bottom: 0.5rem;
 }
