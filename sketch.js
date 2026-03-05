@@ -39,6 +39,9 @@ function setup() {
   projectData.forEach((project, index) => {
     createProject(project, index);
   });
+
+  textFont('Crimson Pro');
+  drawingContext.letterSpacing = '1px'
 }
 
 function checkHeaderAndRelease() {

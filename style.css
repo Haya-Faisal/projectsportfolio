@@ -109,6 +109,7 @@ header nav a {
   visibility: hidden;
   transition: opacity 0.6s ease, visibility 0.6s ease;
   z-index: 900;
+  font-family: "Crimson Pro", serif;
 }
 
 #projects-container.visible {
