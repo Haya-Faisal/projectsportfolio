@@ -20,6 +20,47 @@
   backface-visibility: hidden;
 }
 
+/* ─────────────────────────────────────────────
+   INTRO OVERLAY
+   ───────────────────────────────────────────── */
+ 
+#intro-overlay {
+  position: fixed;
+  inset: 0;                        /* covers the whole viewport */
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 9999;                   /* on top of everything */
+  pointer-events: none;            /* don't block any clicks underneath */
+}
+ 
+#intro-mandala {
+  width: min(60vw, 380px);
+  height: min(60vw, 380px);
+}
+ 
+/* All SVG children start with their stroke invisible —
+   anime.js will animate strokeDashoffset to draw them in */
+/* #intro-mandala path,
+#intro-mandala line,
+#intro-mandala circle,
+#intro-mandala polygon,
+#intro-mandala rect {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+} */
+ 
+/* Mobile tweak */
+@media screen and (max-width: 500px) {
+  #intro-mandala {
+    width: 75vw;
+    height: 75vw;
+  }
+}
+
 /* Body and layout */
 body {
   background: var(--background);
