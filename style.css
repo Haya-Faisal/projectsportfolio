@@ -67,7 +67,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  min-height: 130vh; /* Ensure enough content to scroll */
+  min-height: 100vh; /* Ensure enough content to scroll */
 }
 
 /* Header starts at bottom of screen */
@@ -139,17 +139,71 @@ header nav a {
   pointer-events: none;
   }
 
+  #about {
+  position: absolute;
+  top: 100vh; /* sits below the projects section */
+  left: 0;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  z-index: 900;
+  margin-left: 100px;
+  
+}
+
+#about.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.about-image {
+  width: 400px;
+  height: 600px;
+  border-radius: 8px;
+  
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  width: 600px;
+  margin-right: 100px;
+}
+
+.about-text h2 {
+  margin-bottom: 1rem;
+}
 /* Projects container - initially hidden below viewport */
 #projects-container {
   position: absolute;
   top: 100vh;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.6s ease, visibility 0.6s ease;
   z-index: 900;
+  padding-top: 600px;
   font-family: "Crimson Pro", serif;
 }
 

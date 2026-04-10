@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
     <script src="sketch.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 </head>
 <body>
     <!-- ── INTRO OVERLAY ── -->
@@ -87,6 +88,25 @@
         <div class="arrow-down">↓</div>
     </div>
     </header>
+
+    <div id="about">
+  <div class="about-container">
+    <div class="about-image">
+      <img src="/assets/photo.jpeg" alt="Haya Faisal" />
+    </div>
+    <div class="about-text">
+      <h2>About Me</h2>
+      <p>
+        Hi! I'm Haya Faisal — a designer and developer with a passion for 
+        building clean, meaningful digital experiences. With roots in Pakistan 
+        and a journey through Shanghai and New York, I bring a global perspective 
+        to every project I create. I specialize in web development and graphic design, and I love turning 
+        complex problems into simple, beautiful solutions. Feel free to explore 
+        my projects below!
+      </p>
+    </div>
+  </div>
+</div>
     
     <div id="projects-container">
     <div class="menu-wrapper">
@@ -143,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('header');
     const projectsContainer = document.getElementById('projects-container');
     const menuWrapper = document.querySelector('.menu-wrapper');
+    const aboutSection = document.getElementById('about');
 
     window.addEventListener('scroll', function() {
         const scrollY = window.scrollY || window.pageYOffset;
@@ -154,7 +175,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const easedProgress = Math.pow(scrollProgress, 0.9);
         
         header.style.transform = `translateY(-${easedProgress * 400}%)`;
-        
+        if (scrollY >= scrollTriggerDistance) {
+    header.classList.add('at-top');
+    projectsContainer.classList.add('visible');
+    aboutSection.classList.add('visible');   // ← add this
+} else {
+    header.classList.remove('at-top');
+    projectsContainer.classList.remove('visible');
+    aboutSection.classList.remove('visible'); // ← and this
+}
         // Handle header and projects container visibility
         if (scrollY >= scrollTriggerDistance) {
             header.classList.add('at-top');
@@ -170,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         //  menu wrapper visibility 
-        if (scrollY > 500) {
+        if (scrollY > 200) {
             if (menuWrapper) menuWrapper.classList.add('active');
         } else {
             if (menuWrapper) menuWrapper.classList.remove('active');
