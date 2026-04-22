@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mrs.Zaheed²Dhaba · Monthly Letter Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Typography & Spacing */
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Project Links */
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+            flex-wrap: wrap;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #800020;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(204, 0, 0, 0.08);
+            border-radius: 6px;
+            border: 1px solid rgba(204, 0, 0, 0.08);
+            transition: all 0.2s ease;
+        }
+        .project-link:hover {
+            background-color: rgba(204, 0, 0, 0.08);
+            text-decoration: none;
+        }
+
+        /* Layout Sections */
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+
+        /* Lists */
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* Code Blocks */
+        pre {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 4px solid #ddd;
+        }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #d63384; }
+
+        /* Tech Tags */
+        .tag { display: inline-block; background: #fff0f0; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-links { gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Mrs.Zaheed²Dhaba</h1>
+        
+        <!-- Project Links (placeholders – update with actual URLs) -->
+        <div class="project-links">
+            <a href="https://github.com/Haya-Faisal/letterloop" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://letters-73a36.web.app" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Enabled a private community to share personal answers to monthly prompts, with real‑time synchronization across all members and automatic archival of past months.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Role</h4>
+                <p>Full‑Stack Developer, UI/UX Designer</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>HTML5, CSS3, Vanilla JS, Firebase Firestore, SVG, CSS Flexbox/Grid</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>Mar 2026 – Apr 2026</p>
+            </div>
+        </section>
+
+        <section id="video-section" style="width: 100%; height: 30%;">
+            <div style="max-width: 1200px;height: 50%; margin: 0 auto; padding: 0 20px;">
+                <video 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                    style="width: 100%; height: auto; ">
+                    <source src="./assets/letterloop.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+        <section>
+            <h2>Features</h2>
+
+            <h3>Password‑Protected Landing & Envelope System</h3>
+            <ul>
+                <li><strong>Shared Password Gate:</strong> Single password (<code>Mrs.Zaheed</code>) controls access – no per‑user accounts, ideal for small groups.</li>
+                <li><strong>Three Envelope States:</strong> <em>Last Month</em> (read‑only archive), <em>This Month</em> (add answers), <em>Next Month</em> (suggest questions).</li>
+                <li><strong>Automatic Month Rotation:</strong> On each load, the app verifies and auto‑creates Firestore documents for current + next month, guaranteeing seamless transitions.</li>
+                <li><strong>Custom SVG Envelopes:</strong> Visually distinct designs for each month with badges (“Read only”, “Add answers”, “Suggest questions”).</li>
+            </ul>
+
+            <h3>Real‑time Q&A Subsystem</h3>
+            <ul>
+                <li><strong>Firestore Live Listeners:</strong> <code>onSnapshot</code> queries provide instant updates when new answers or questions are posted, without page refreshes.</li>
+                <li><strong>Per‑Month Subcollections:</strong> Each month document contains a <code>questions</code> subcollection, storing question text, suggestedBy name, answers array, and timestamps.</li>
+                <li><strong>Answer & Question Submission:</strong> Atomic updates using <code>arrayUnion</code> for answers, and <code>addDoc</code> for new questions – all with optimistic UI feedback.</li>
+                <li><strong>Read‑only Archives:</strong> Past months render answers in elegant card layout, preserving the group’s history.</li>
+            </ul>
+
+            <h3>Responsive Vintage Interface</h3>
+            <ul>
+                <li><strong>Glassmorphism & Blur Effects:</strong> <code>backdrop-filter: blur(12px)</code> and soft gradients create a tactile “letter” aesthetic.</li>
+                <li><strong>Mobile‑First Layout:</strong> Sticky top bars, safe‑area insets, and touch‑friendly buttons work flawlessly on any device.</li>
+                <li><strong>Toast Notifications:</strong> Non‑intrusive feedback for every submission, error, or validation message.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Vanilla JavaScript (ES6 Modules)</span>
+                <span class="tag">Firebase Firestore (NoSQL)</span>
+                <span class="tag">Firebase SDK v10.8</span>
+                <span class="tag">Google Fonts (Playfair Display / Lora)</span>
+                <span class="tag">Inline SVG</span>
+            </div>
+            
+            <h3 style="margin-top: 1.5rem;">Performance & Data Optimizations</h3>
+            <ul>
+                <li><strong>Real‑time Listener Cleanup:</strong> Unsubscribes from Firestore when leaving the letter view to prevent memory leaks.</li>
+                <li><strong>Escaped User Input:</strong> Custom <code>escHtml()</code> prevents XSS by escaping <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, and quotes before rendering.</li>
+                <li><strong>Lazy Month Creation:</strong> Month documents are only created when needed, keeping the database lean.</li>
+                <li><strong>Efficient Query Ordering:</strong> Questions are ordered by <code>createdAt</code> (ascending) to preserve conversation flow.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>Firestore Data Model</h3>
+            <pre><code>// Month document (e.g., months/2026-04)
+{
+  createdAt: timestamp,
+  label: "April 2026"
+}
+
+// Question subcollection (months/{monthKey}/questions)
+{
+  text: "What made you smile this week?",
+  suggestedBy: "Alex",
+  createdAt: timestamp,
+  answers: [
+    { name: "Jordan", text: "Seeing the sunrise.", postedAt: "2026-04-10..." }
+  ]
+}</code></pre>
+
+            <h3>Real‑time Listener with Month‑Specific Rendering</h3>
+            <pre><code>const qRef = collection(db, 'months', monthKey, 'questions');
+const q = query(qRef, orderBy('createdAt', 'asc'));
+unsubscribe = onSnapshot(q, (snapshot) => {
+  const questions = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  if (type === 'last') renderLast(questions);
+  else if (type === 'current') renderCurrent(questions, monthKey);
+  else renderNext(questions, monthKey);
+});</code></pre>
+
+            <h3>Atomic Answer Submission</h3>
+            <pre><code>await updateDoc(doc(db, 'months', monthKey, 'questions', qId), {
+  answers: arrayUnion({ name, text, postedAt: new Date().toISOString() })
+});</code></pre>
+
+            <h3>Automatic Month Rotation (Ensuring Continuity)</h3>
+            <pre><code>async function ensureMonthsExist() {
+  const currentKey = getMonthKey(0);
+  const currentSnap = await getDoc(doc(db, 'months', currentKey));
+  if (!currentSnap.exists()) {
+    await setDoc(doc(db, 'months', currentKey), {
+      createdAt: serverTimestamp(),
+      label: getMonthLabel(0)
+    });
+  }
+  // same for next month (offset +1)
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Client‑Side State & Navigation</h2>
+            
+            <h3>Page Transitions & Password Gate</h3>
+            <pre><code>function checkPassword() {
+  const val = document.getElementById('pwd-input').value;
+  const PASSWORD = "Mrs.Zaheed";
+  if (val === PASSWORD) {
+    showPage('main');
+    updateMonthLabels();
+    ensureMonthsExist();
+  } else {
+    document.getElementById('pwd-error').textContent = "That's not quite right.";
+  }
+}</code></pre>
+
+            <h3>Dynamic Envelope Labels</h3>
+            <pre><code>function getMonthLabel(offset = 0) {
+  const d = new Date();
+  const totalMonths = d.getFullYear() * 12 + d.getMonth() + offset;
+  const y = Math.floor(totalMonths / 12);
+  const m = totalMonths % 12;
+  return `${MONTH_NAMES[m]} ${y}`;
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Challenges & Solutions</h2>
+            
+            <h3>Challenge: Real‑time updates without over‑fetching</h3>
+            <p><strong>Solution:</strong> Used Firestore <code>onSnapshot</code> with subcollection queries; only changed documents trigger UI re‑renders, while automatic unsubscription prevents background listeners when not needed.</p>
+
+            <h3>Challenge: Preventing XSS from user input</h3>
+            <p><strong>Solution:</strong> Implemented <code>escHtml()</code> helper that escapes <code>&</code>, <code>&lt;</code>, <code>&gt;</code>, and <code>"</code> before rendering any user‑supplied text – securing all Q&A entries.</p>
+
+            <h3>Challenge: Seamless month transition without manual admin</h3>
+            <p><strong>Solution:</strong> <code>getMonthKey(offset)</code> generates YYYY‑MM keys; on every load, the app checks and auto‑creates missing month documents, ensuring that next month’s “suggestions” folder is always ready.</p>
+
+            <h3>Challenge: Mobile UX with sticky header & safe areas</h3>
+            <p><strong>Solution:</strong> Used <code>position: sticky</code> on the letter‑view top bar and <code>env(safe-area-inset-bottom)</code> to avoid notch/gesture overlap on modern iPhones.</p>
+        </section>
+
+        <section>
+            <h2>Deployment Architecture</h2>
+            
+            <pre><code>Static Hosting (Vercel / Netlify / Firebase Hosting)
+        ↓
+Firebase Firestore (real‑time NoSQL database)
+        ↓
+Client Browser (Vanilla JS + Firestore SDK)
+        ↓
+End‑to‑end encryption via Firebase security rules (optional)</code></pre>
+            <p>The entire frontend is a single HTML/CSS/JS file, making it portable and easy to deploy on any static web server. Firestore handles all backend logic, authentication (password gate is client‑side; for production one would add Firebase Auth or security rules).</p>
+        </section>
+
+        <section>
+            <h2>System Data Flow</h2>
+            <pre><code>User enters password → Landing page validates → Show envelope dashboard
+        ↓
+User clicks envelope (last/current/next)
+        ↓
+Firestore real‑time listener attached to months/{monthKey}/questions
+        ↓
+Render view based on month type:
+  - Last: display questions + existing answers (read‑only)
+  - Current: display questions + form to add an answer
+  - Next: display suggested questions + form to suggest new question
+        ↓
+User submits answer/question → Firestore update (arrayUnion or addDoc)
+        ↓
+Snapshot listener fires → all connected clients see the update instantly</code></pre>
+        </section>
+
+        <section>
+            <h2>Key Code Snippets</h2>
+            <h3>Escaping Utility (XSS Protection)</h3>
+            <pre><code>function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}</code></pre>
+
+            <h3>Rendering a Current Month Question (with Answer Form)</h3>
+            <pre><code>container.innerHTML = questions.map(q => `
+  &lt;div class="qa-block"&gt;
+    &lt;div class="question-text"&gt;${escHtml(q.text)}&lt;/div&gt;
+    &lt;div class="add-form"&gt;
+      &lt;h4&gt;Your answer&lt;/h4&gt;
+      &lt;input type="text" id="name-${q.id}" placeholder="Your name"&gt;
+      &lt;textarea id="ans-${q.id}" placeholder="Write something..."&gt;&lt;/textarea&gt;
+      &lt;button onclick="window.submitAnswer('${monthKey}','${q.id}')"&gt;Post answer →&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+`).join('');</code></pre>
+        </section>
+
+    </main>
+
+    <script>
+        // Optional: update back link behavior if needed (preserves original template behavior)
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "/";
+                backLink.textContent = "← Back";
+            }
+        });
+    </script>
+</body>
+</html>

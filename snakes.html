@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snakes - Collaborative Multi-Screen Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+        
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        .project-links { display: flex; gap: 1rem; margin: 1rem 0 2rem 0; flex-wrap: wrap; }
+        .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: #800020; font-size: 0.95rem; padding: 0.5rem 1rem; background-color: rgba(156, 39, 176, 0.08); border-radius: 6px; border: 1px solid rgba(156, 39, 176, 0.15); transition: all 0.2s ease; }
+        .project-link:hover { background-color: rgba(156, 39, 176, 0.12); text-decoration: none; }
+        
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+        
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        pre { background-color: #f5f5f5; border-radius: 6px; padding: 1.2rem; margin: 1.5rem 0; overflow-x: auto; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid #ddd; }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #c80064; }
+        
+        .tag { display: inline-block; background: #f3e5f5; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+        .algorithm-box { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border-left: 4px solid #ddd; }
+        
+        @media (max-width: 768px) { body { padding: 30px 20px; } h1 { font-size: 2rem; } .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; } .project-links { gap: 0.75rem; } }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Between Screens</h1>
+        <p>A multi-device, collaborative arcade experience where the game world spans across physical screens.</p>
+        
+        <div class="project-links">
+            <a href="https://github.com/Haya-Faisal/abc/tree/main/project1" class="project-link">
+                <i class="fab fa-github"></i> GitHub Repository
+            </a>
+            <a href="#" class="project-link">
+                <i class="fas fa-external-link-alt"></i> Live Demo (Requires 2 Devices)
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>Developed a real-time spatial synchronization engine enabling seamless gameplay across multiple mobile browsers with 0% state desync.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>Node.js, Socket.io, p5.js, Express, Device Orientation API</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>March 2026 - March 2026</p>
+            </div>
+        </section>
+
+        <section id="video-section" style="width: 100%; height: 30%;">
+            <div style="max-width: 500px;height: 50%; margin: 0 auto; padding: 0 20px;">
+                <video 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                    style="width: 100%; height: auto; ">
+                    <source src="./assets/snakes.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section>
+            <h2>Core Features</h2>
+
+            <h3>Multi-Screen Synchronization</h3>
+            <ul>
+                <li><strong>Cross-Device Continuity:</strong> Orchestrates snake movement transitions from Screen A to Screen B based on viewport edge collision.</li>
+                <li><strong>Centralized State Authority:</strong> Server-side logic for food spawning and score tracking to ensure consistency.</li>
+                <li><strong>Socket-Based Role System:</strong> Dynamic assignment of "Screen 1" and "Screen 2" roles upon connection.</li>
+            </ul>
+
+            <h3>Motion-Based Interaction</h3>
+            <ul>
+                <li><strong>Gyroscope Navigation:</strong> Uses real-time accelerometer data to steer the snake, providing a tactile, hardware-integrated feel.</li>
+                <li><strong>Asymmetric Control Mode:</strong> Level 2 introduces a mechanic where Device A controls the snake visible on Device B.</li>
+                <li><strong>iOS Permission Handshake:</strong> Custom implementation to handle browser restrictions on motion sensor access.</li>
+            </ul>
+
+            <h3>Dynamic Performance Engine</h3>
+            <ul>
+                <li><strong>Frame-Independent Logic:</strong> Moves the snake based on a 320ms interval rather than frame rate for cross-device fairness.</li>
+                <li><strong>Adaptive Difficulty:</strong> Real-time modification of movement intervals as scores increase.</li>
+                <li><strong>Low-Latency Communication:</strong> Optimized Socket.io payloads for smooth, lag-free steering.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>Socket.io "Handoff" Logic</h3>
+            <pre><code>// Server-side: Handling the transition between screens
+socket.on('snake-exited', ({ side, x, y, snakelenght }) => {
+    let otherId = (role === 1) ? screen2 : screen1;
+    if (otherId) {
+        // Broadcast to the other device that the snake is entering its viewport
+        io.to(otherId).emit('snake-entering', { from: side, x, y, snakelenght });
+    } else {
+        // Safety check: bounce snake back if second screen is missing
+        socket.emit('snake-bounce');
+    }
+});</code></pre>
+
+            <h3>Device Orientation Integration</h3>
+            <pre><code>// Client-side: Capturing hardware tilt for movement
+function handleOrientation(eventData) {
+    const movingThreshold = 10;
+    let beta = eventData.beta;   // Pitch
+    let gamma = eventData.gamma; // Roll
+
+    if (Math.abs(gamma) > movingThreshold) {
+        snakedirx = gamma > 0 ? 1 : -1;
+        snakediry = 0;
+    } else if (Math.abs(beta) > movingThreshold) {
+        snakediry = beta > 0 ? 1 : -1;
+        snakedirx = 0;
+    }
+}</code></pre>
+
+            <h3>Asymmetric Level State Machine</h3>
+            <div class="algorithm-box">
+                <p><strong>Level 2 Logic:</strong> The system swaps the control stream. <code>Screen 1</code> captures motion data and emits <code>'tilt'</code> events, which <code>Screen 2</code> listens for to update its local snake object, creating a "remote-controlled" experience.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Performance & Security</h2>
+            <ul>
+                <li><strong>HTTPS Implementation:</strong> Deployed with SSL certificates to comply with modern browser requirements for the Device Orientation API.</li>
+                <li><strong>Memory Efficiency:</strong> Utilizes simple array structures for the snake body to minimize garbage collection overhead during fast-paced movement.</li>
+                <li><strong>Latency Filtering:</strong> Implements a 10-degree deadzone threshold on tilt data to prevent "jitter" in movement commands.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Challenges & Solutions</h2>
+            
+            <h3>Challenge: State Desynchronization</h3>
+            <p><strong>Solution:</strong> Implemented a "Server-as-Source" model for food. Instead of both screens calculating food positions, the server emits <code>'food-pos'</code> to one screen and <code>'food-cleared'</code> to the other simultaneously.</p>
+
+            <h3>Challenge: Viewport Resolution Mismatch</h3>
+            <p><strong>Solution:</strong> Standardized the game grid to 20px cells and used relative edge detection (Top/Bottom/Left/Right) rather than absolute pixel coordinates for handoffs.</p>
+        </section>        
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "index.html";
+                backLink.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Portfolio';
+            }
+        });
+    </script>
+</body>
+</html>

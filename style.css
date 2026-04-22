@@ -1,374 +1,292 @@
 :root {
-  --scroll: 0px;
   --accent: #630010;
-  --vh: 400px;
-  --visible: 170;
-  --background: #ffffff;
-  
+  --bg: #ffffff;
   font-family: "Crimson Pro", serif;
   font-optical-sizing: auto;
-  font-style: normal;
-  word-spacing: 0.3em;
-  text-underline-offset: 3px;
   color: var(--accent);
-  letter-spacing: -0.09em;
-  scroll-behavior: smooth;
+  letter-spacing: -0.05em;
+  word-spacing: 0.2em;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   backface-visibility: hidden;
 }
 
-/* ─────────────────────────────────────────────
-   INTRO OVERLAY
-   ───────────────────────────────────────────── */
- 
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* ── INTRO OVERLAY ── */
 #intro-overlay {
   position: fixed;
-  inset: 0;                        /* covers the whole viewport */
-  background: #ffffff;
+  inset: 0;
+  background: #fff;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  z-index: 9999;                   /* on top of everything */
-  pointer-events: none;            /* don't block any clicks underneath */
+  z-index: 9999;
+  pointer-events: none;
 }
- 
 #intro-mandala {
   width: min(60vw, 380px);
   height: min(60vw, 380px);
 }
- 
-/* All SVG children start with their stroke invisible —
-   anime.js will animate strokeDashoffset to draw them in */
-/* #intro-mandala path,
-#intro-mandala line,
-#intro-mandala circle,
-#intro-mandala polygon,
-#intro-mandala rect {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-} */
- 
-/* Mobile tweak */
-@media screen and (max-width: 500px) {
-  #intro-mandala {
-    width: 75vw;
-    height: 75vw;
-  }
-}
 
-/* Body and layout */
-body {
-  background: var(--background);
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  min-height: 100vh; /* Ensure enough content to scroll */
-}
-
-/* Header starts at bottom of screen */
-header {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000; 
-}
-
-header.at-top {
-    top: 0;
-    bottom: auto;
-}
-
-/* Header content styles */
-header h1 {
-  margin: 0;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 3rem;
-  line-height: 1em;
-  padding: 0 1rem;
-  letter-spacing: -0.04em;
-  text-align: center;
-}
-
-header h2 {
-  margin: 0;
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  letter-spacing: -0.05em;
-  font-weight: 600;
-  width: 100%;
-  text-align: center;
-  /* font-family: "Helvetica", sans-serif; */
-  margin-bottom: 20px;
-}
-
-header nav {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-header nav a {
-  color: var(--accent);
-  text-transform: uppercase;
-  text-decoration: none;
-  /* font-family: "Helvetica", sans-serif; */
-}
-
-/* Spacer to push content down */
-.header-spacer {
-  height: 100vh;
-  width: 100%;
-  pointer-events: none;
-}
-
+/* ── CONSTELLATION CANVAS ── */
 #animation-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   pointer-events: none;
-  }
-
-  #about {
-  position: absolute;
-  top: 100vh; /* sits below the projects section */
-  left: 0;
-  width: 100%;
-  max-width: 100vw;
-  margin: 0 auto;
-  padding: 1rem 1rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-  z-index: 900;
-  margin-left: 100px;
-  
 }
 
-#about.visible {
-  opacity: 1;
-  visibility: visible;
-}
-.about-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.about-image {
-  width: 400px;
-  height: 600px;
-  border-radius: 8px;
-  
-}
-
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  border-radius: 8px;
-}
-
-.about-text {
-  flex: 1;
-  font-size: 1.5rem;
-  line-height: 1.8;
-  width: 600px;
-  margin-right: 100px;
-}
-
-.about-text h2 {
-  margin-bottom: 1rem;
-}
-/* Projects container - initially hidden below viewport */
-#projects-container {
-  position: absolute;
-  top: 100vh;
+/* ── SCROLL TRACK ── */
+#h-track {
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-  z-index: 900;
-  padding-top: 600px;
-  font-family: "Crimson Pro", serif;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  z-index: 1;
 }
-
-#projects-container.visible {
-  opacity: 1;
-  visibility: visible;
-  /* cursor: pointer; */
-}
-
-.menu-wrapper {
-  top: 0;
-  right: 0;
-  z-index: 1005;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-  position: fixed; 
-}
-
-.menu-wrapper.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.menu-wrapper.active .hamburgcontainer {
-  display: block; 
-}
-
-.hamburgcontainer {
-  top: 0;
-  right: 0;
-  display: inline-block;
-  cursor: pointer;
-  padding: 20px;
-  position:fixed;
-}
-
-
-.bar1, .bar2, .bar3 {
-  width: 30px;
-  height: 4px;
-  background-color: #630010;
-  margin: 5px 0;
-  transition: 0.4s;
-  cursor: pointer !important;
-}
-
-.change .bar1 {
-  transform: translate(0, 3px) rotate(-25deg);
-}
-
-.change .bar2 {
-  transform: translate(15px, 0px) rotate(-90deg);
-  width: 25px;;
-}
-
-.change .bar3 {
-  transform: translate(0, -3px) rotate(25deg);
-}
-
-/* Menu items styling */
-.menu-items {
-  display: none; 
-  flex-direction: column;
-  background-color: #630010;
-  padding: 10px 0;
-  border-radius: 0 0 8px 0;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  width: 250px;
-  position: absolute;
-  top: 64px; /* Position below the hamburger icon */
-  right: 0;
-  z-index: 999;
-  animation: slideIn 0.3s ease-out;
-  border-top: 1px solid #630010;
-}
-
-.menu-items a {
-  text-decoration: none;
-  color: white;
-  padding: 15px 25px;
-  display: block;
-  transition: all 0.3s;
-  /* font-family: Arial, sans-serif; */
-  font-size: 20px;
-  font-weight: 400px;
-  border-bottom: 1px solid #f5f5f5;
-}
-
-.menu-items a:last-child {
-  border-bottom: none;
-}
-
-.menu-items a:hover {
-  background-color: #f8f8f8;
-  color: #000;
-  padding-left: 30px;
-}
-/* Responsive styles */
-@media screen and (max-width: 800px) {
-  header h1 {
-    font-size: 2rem;
-    padding: 0 0.5rem;
-  }
-  
-  header h2 {
-    font-size: 1rem;
-  }
-  
-  header nav {
-    flex-wrap: wrap;
-    padding: 0 1rem;
-  }
-  
-  header nav a {
-    font-size: 0.9rem;
-  }
-  
-  /* For mobile, make header always visible when at top */
-  header.at-top {
-    position: fixed;
-    top: 0;
-    bottom: auto;
-  }
-}
-
-.scroll-indicator {
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  animation: fadeInOut 2s ease-in-out infinite;
-}
-
-.scroll-indicator p {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  /* font-family: "Helvetica", sans-serif; */
-  margin: 0;
-  margin-bottom: 0.5rem;
-}
-
-.arrow-down {
-  font-size: 2rem;
-  animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes fadeInOut {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* Hide scroll indicator when header is at top */
-header.at-top .scroll-indicator {
+#h-track::-webkit-scrollbar {
   display: none;
+}
+
+/* ── SECTIONS (horizontal panels) ── */
+.h-section {
+  flex: 0 0 auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 4vw;
+  position: relative;
+}
+
+/* ── SECTION 1: INTRO ── */
+#section-intro {
+  width: 59vw;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.5rem;
+  padding-left: 6vw;
+  text-align: center;
+}
+
+.site-nav {
+  text-align: center;
+  display: flex;
+  gap: 2rem;
+  padding-left: 16rem;
+}
+.site-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.intro-text .name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  margin-bottom: 0.6rem;
+}
+.intro-text h1 {
+  font-size: clamp(1.4rem, 2.6vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+/* ── SECTION 2: PHOTO ── */
+#section-photo {
+  width: 32vw;
+  padding: 2rem 2vw;
+}
+.photo-wrap {
+  width: 100%;
+  height: 75vh;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* ── SECTION 3: ABOUT FACTS ── */
+#section-about {
+  width: 24vw;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.facts {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.facts p {
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+.facts .sub {
+  font-size: 0.85em;
+  opacity: 0.65;
+}
+
+/* ── SECTION 4: PROJECT CARDS ── */
+#section-projects {
+  width: auto;
+  min-width: max-content;
+  align-items: center;
+  padding: 0 5vw;
+  gap: 0;
+}
+
+.cards-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+/* ── PROJECT CARDS with Islamic geometric border ── */
+ 
+/* Change these 3 values only */
+:root {
+    --card-w: 900px;
+    --card-h: 280px;
+    --card-border: 30px; 
+}
+ 
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--accent);
+    flex: 0 0 auto;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-card:nth-child(even) { transform: translateY(168px); }
+.project-card:nth-child(odd)  { transform: translateY(-112px); }
+.project-card:hover            { transform: translateY(0) scale(1.04); }
+ 
+.card-frame {
+    position: relative;
+    width: 440px;
+    height: var(--card-h);
+    flex: 0 0 auto;
+}
+ 
+/* SVG scales to fill the frame automatically */
+.card-lace {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Maroon inner content area */
+.card-inner {
+  position: absolute;
+  top: 43px;
+  left: 40px;
+  right: 28px;
+  bottom: 28px;
+  /* background: var(--accent); */
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.card-inner img,
+.card-inner video {
+  width: 100%;
+  height: 50%;
+  flex: 1;
+  object-fit: cover;
+  display: block;
+  /* opacity: 0.75; */
+  mix-blend-mode: luminosity;
+  min-height: 0;
+}
+
+/* Title bar inside the card at the bottom */
+.card-title {
+  /* width: 249px; */
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.12);
+  color: #630010;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-align: center;
+  padding: 6px 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  #section-intro {
+    width: 90vw;
+    padding-left: 6vw;
+  }
+  #section-photo {
+    width: 70vw;
+  }
+  #section-about {
+    width: 80vw;
+  }
+  .card-frame {
+    width: 160px;
+    height: 220px;
+  }
+  .card-inner {
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
+  }
 }
