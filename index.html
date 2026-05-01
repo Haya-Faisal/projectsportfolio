@@ -363,7 +363,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/bookflix.png"/>
-                            <div class="card-title">Bookflix</div>
+                            <div class="card-title"><span class="card-label">Project:</span> Bookflix<div class="card-tools">Node.js · p5.js · Google Books API · Ollama LLM</div></div>
                         </div>
                     </div>
                 </a>
@@ -391,7 +391,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/tessera.png"/>
-                            <div class="card-title">Tessera</div>
+                            <div class="card-title"><span class="card-label">Project:</span> Tessera<div class="card-tools">Node.js · p5.js · Socket.io · Express</div></div>
                         </div>
                     </div>
                 </a>
@@ -421,7 +421,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/friendsandfoes.png"/>
-                            <div class="card-title">Friends &amp; Foes</div>
+                            <div class="card-title"><span class="card-label">Project:</span> Friends &amp; Foes<div class="card-tools">p5.js · Tweakpane.js · Vanilla JS</div></div>
                         </div>
                     </div>
                 </a>
@@ -449,7 +449,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/rantitout.png"/>
-                            <div class="card-title">Rant it Out</div>
+                            <div class="card-title"><span class="card-label">Project:</span> Rant it Out<div class="card-tools">p5.js · Web Audio API · Canvas API</div></div>
                         </div>
                     </div>
                 </a>
@@ -477,7 +477,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/snakes.png"/>
-                            <div class="card-title">Between Screens</div>
+                            <div class="card-title"><span class="card-label">Project:</span> Between Screens<div class="card-tools">Node.js · Socket.io · p5.js · Express</div></div>
                         </div>
                     </div>
                 </a>
@@ -505,8 +505,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/letterloop.png"/>
-                            <div class="card-title">Letter Loop
-                            </div>
+                            <div class="card-title"><span class="card-label">Project:</span> Letter Loop<div class="card-tools">Vanilla JS · Firebase Firestore · HTML5 · CSS3</div></div>
                         </div>
                     </div>
                 </a>
@@ -534,7 +533,7 @@
                     </svg>
                         <div class="card-inner">
                             <img src="assets/todolist.png"/>
-                            <div class="card-title">Task Tracker</div>
+                            <div class="card-title"><span class="card-label">Project:</span> Task Tracker<div class="card-tools">Vanilla JS · HTML5 · CSS3 · LocalStorage</div></div>
                         </div>
                     </div>
                 </a>
@@ -562,7 +561,7 @@
                     </svg>
                         <div class="card-inner">
                           <img src="assets/onechorusbot.png"/>
-                            <div class="card-title">One Chorus Bot</div>
+                            <div class="card-title"><span class="card-label">Project:</span> One Chorus Bot<div class="card-tools">Transformers.js · ONNX Runtime · Web Audio API · p5.js</div></div>
                         </div>
                     </div>
                 </a>
@@ -598,25 +597,25 @@
         });
       })();
 
-      // ── SMOOTH HORIZONTAL SCROLL ──
+      // ── SMOOTH HORIZONTAL SCROLL (desktop only) ──
       (function () {
-        var track = document.getElementById("h-track");
-        var target = 0; // where we want to be
-        var current = 0; // where we are (interpolated)
-        var ease = 0.08; // lower = smoother/slower, 0.08–0.12 is nice
+        var isMobile = window.matchMedia("(max-width: 768px)").matches;
+        if (isMobile) return; // let mobile use native vertical scroll
 
-        // Capture wheel delta
+        var track = document.getElementById("h-track");
+        var target = 0;
+        var current = 0;
+        var ease = 0.08;
+
         function onWheel(e) {
           e.preventDefault();
           target += e.deltaY + e.deltaX;
-          // clamp to scrollable range
           var maxScroll = track.scrollWidth - track.clientWidth;
           target = Math.max(0, Math.min(target, maxScroll));
         }
         window.addEventListener("wheel", onWheel, { passive: false });
         track.addEventListener("wheel", onWheel, { passive: false });
 
-        // Lerp loop
         function loop() {
           current += (target - current) * ease;
           if (Math.abs(target - current) > 0.5) {
@@ -626,13 +625,10 @@
         }
         loop();
 
-        // Touch support
         var tx = 0;
         window.addEventListener(
           "touchstart",
-          function (e) {
-            tx = e.touches[0].clientX;
-          },
+          function (e) { tx = e.touches[0].clientX; },
           { passive: true }
         );
         window.addEventListener(
