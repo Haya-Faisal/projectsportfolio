@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naqsh — Islamic Geometric Pattern Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+            flex-wrap: wrap;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #800020;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(128, 0, 32, 0.08);
+            border-radius: 6px;
+            border: 1px solid rgba(128, 0, 32, 0.15);
+            transition: all 0.2s ease;
+        }
+        .project-link:hover {
+            background-color: rgba(128, 0, 32, 0.14);
+            text-decoration: none;
+        }
+
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; color: #800020; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        pre {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            border-left: 4px solid #800020;
+        }
+        code {
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            background: #f5f5f5;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #800020;
+        }
+
+        .tag { display: inline-block; background: #fff0f0; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+
+        .concept-quote {
+            border-left: 3px solid #800020;
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            background: #fff8f8;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-links { gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Naqsh</h1>
+        <div class="project-links">
+            <a href="https://github.com/Haya-Faisal/IGP-generator" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Github
+            </a>
+            <a href="https://browsercircus.live/haya/port-4230/" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Project
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Context</h4>
+                <p>Physical exhibition installation, presented on mobile devices and live projection.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>p5.js, Node.js, Express, Socket.io, Web Audio API, Vanilla JS</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>March 2026 - May 2026</p>
+            </div>
+        </section>
+
+        <section id="video-section" style="width: 100%; height: 30%;">
+            <div style="max-width: 500px;height: 100%; margin: 0 auto; padding: 0 20px;">
+                <video 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                    style="width: 100%; height: auto; ">
+                    <source src="./assets/Naqsh.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section>
+            <h2>Concept</h2>
+
+            <p>Islamic geometric patterns are built on the Hankin method — a mathematical system of shooting rays from the midpoints of polygon edges and finding their intersections. Every pattern emerges from a single variable: the angle theta. Change the angle, and the entire geometry reorganises.</p>
+
+            <p>Naqsh uses this as its core mechanic. Visitors long-press anywhere on the shared canvas to summon the pattern generator, choose their angle by dragging, pick a colour, and place their tile exactly where they pressed. That tile persists on the server — every visitor who opens the page thereafter sees it, layered with all those placed before.</p>
+
+            <p>The canvas is a 10,000 × 10,000px world. Visitors navigate it with two fingers. What accumulates over the course of an exhibition is a collective geometric record of every person who touched the screen.</p>
+
+        </section>
+
+        <section>
+            <h2>Features</h2>
+
+            <h3>Hankin Geometric Engine</h3>
+            <ul>
+                <li><strong>Mathematical line generation:</strong> Implements the full Hankin method — for each polygon edge, two inward rays are fired at ±theta, intersected using parametric line math, and collected as segment pairs.</li>
+                <li><strong>Three tiling systems:</strong> Square-Octagon (4-8-8) and Rhombitrihexagonal (3-4-6-4), each producing a distinct pattern family from the same mathematical process.</li>
+                <li><strong>Bounding-box normalisation:</strong> All segment sets are scaled and centred into a fixed tile size regardless of how far the star points extend, so every tile fits its grid cell perfectly.</li>
+                <li><strong>Theta-driven variety:</strong> The angle (10°–100°) determines how many star points form, how deep the valleys are, and how complex the crossing lattice becomes. Dragging across the preview canvas changes the geometry live.</li>
+            </ul>
+
+            <h3>Per-Segment Physics</h3>
+            <ul>
+                <li><strong>Individual line particles:</strong> Each of the 20–40 line segments in a tile has its own <code>dx, dy, vx, vy</code>. They are independent physics particles, not a single rigid body.</li>
+                <li><strong>Repulsion:</strong> As a finger moves near a tile, each segment's midpoint is tested against the touch position. Segments within the repulsion radius are pushed outward with force proportional to proximity.</li>
+                <li><strong>Ripple propagation:</strong> On tap, a ripple wave radiates outward. Each segment receives a Gaussian-weighted push as the wave front passes through its position — a travelling disturbance that physically crosses the pattern.</li>
+                <li><strong>Spring return:</strong> All segments spring back to their home positions via a damped spring, so the pattern always reassembles after disturbance.</li>
+            </ul>
+
+            <h3>Collaborative Real-Time Canvas</h3>
+            <ul>
+                <li><strong>Persistent tile storage:</strong> Every placed tile is written to <code>tiles.json</code> server-side. New clients receive all historic tiles on connection and the world rebuilds locally.</li>
+                <li><strong>Live multi-user presence:</strong> Touch positions are synced across clients at 50ms throttle. A ✦ symbol marks each connected user's finger — at full opacity for yourself, translucent for others.</li>
+                <li><strong>Shared ripples:</strong> Tap-ripples are broadcast to all clients, which spawn the ripple at the same world coordinates and run the physics locally — the wave feels simultaneous without server-side simulation.</li>
+                <li><strong>Grid snapping:</strong> The world is divided into 140×140px cells. Each tile snaps to the centre of whichever cell the user pressed, preventing overlap and maintaining the structured grid aesthetic.</li>
+            </ul>
+
+            <h3>Spatial Navigation</h3>
+            <ul>
+                <li><strong>10,000 × 10,000px world:</strong> The canvas is a fixed viewport into a much larger space. Two-finger drag pans the world with momentum and clamped boundaries.</li>
+                <li><strong>Viewport-only rendering:</strong> Grid lines and dots are only computed for cells currently visible, keeping performance smooth across a large world.</li>
+                <li><strong>Tile placement at press position:</strong> Long-pressing anywhere opens the generator modal; on confirm, the tile appears in exactly the cell where the press originated.</li>
+            </ul>
+
+            <h3>Sound Design</h3>
+            <ul>
+                <li><strong>Oud string synthesis:</strong> Each interaction triggers a synthesised plucked string — a 40ms filtered noise burst for the attack, followed by a decaying sine fundamental and second harmonic for the resonant body.</li>
+                <li><strong>A minor pentatonic mapping:</strong> Segment positions across the world map to notes in the A minor pentatonic scale — central to Arabic and Persian music — so every drag produces harmonically coherent, unplanned melody.</li>
+                <li><strong>Reverb tail:</strong> A feedback delay at 180ms adds the resonant quality of a tiled room, connecting the sound to the architectural context of Islamic geometric art.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">p5.js</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Express</span>
+                <span class="tag">Socket.io</span>
+                <span class="tag">Web Audio API</span>
+                <span class="tag">HTML5 Canvas</span>
+                <span class="tag">Vanilla JS</span>
+                <span class="tag">HTTPS / WSS</span>
+            </div>
+
+            <h3>Hankin Implementation</h3>
+            <pre><code>function hankinLines(verts, theta) {
+  const cen = centroid(verts);
+  for each edge (a → b):
+    mid = midpoint(a, b)
+    inwardPerp = perpendicular pointing toward centroid
+    rayA = rotate(inwardPerp, +theta)  // from vertex a
+    rayB = rotate(inwardPerp, -theta)  // from vertex b
+    pt = intersect(rayA, rayB)
+    emit segment(a → pt)
+    emit segment(b → pt)
+}</code></pre>
+
+            <h3>Per-Segment Physics Loop</h3>
+            <pre><code>for each segment s in tile.segs:
+  midpoint = tile.wx + (s.ax + s.bx)/2 * sc + ox
+
+  // Repulsion
+  d = distance(midpoint, touchPos)
+  if d < RADIUS:
+    s.vx += (dx/d) * (1 - d/RADIUS) * FORCE
+
+  // Ripple — Gaussian wave front
+  diff = d - (elapsed/1000 * RIPPLE_SPEED)
+  if |diff| < RIPPLE_WIDTH:
+    s.vx += (dx/d) * gaussian(diff) * FORCE * falloff
+
+  // Spring return
+  s.vx += -s.dx * 0.14
+  s.vx *= 0.74
+  s.dx += s.vx</code></pre>
+
+            <h3>Tile Persistence Flow</h3>
+            <pre><code>// Placing a tile
+client  → socket.emit("new-tile", { id, col, row, wx, wy, theta, tiling, mainColor })
+server  → validate → upsert tiles[] → saveTiles() → broadcast to others
+clients → restoreTile() → buildTileSegs() → render
+
+// New client joins
+server  → socket.emit("historic-tiles", tiles[])
+client  → buffer in pendingTiles[] (world not ready yet)
+client  → showMandalaScreen() → initWorld() → flush pendingTiles → render</code></pre>
+        </section>
+
+        <section>
+            <h2>Challenges & Solutions</h2>
+
+            <h3>Pattern extent vs. tile boundary</h3>
+            <p>Hankin star points extend far beyond the polygon boundary — sometimes 3× the polygon size — so drawing at a fixed scale clips most of the pattern. The solution was to generate all segments at unit scale, compute the true bounding box of all endpoints, then scale and centre that bounding box into the tile. Both preview and main canvas use identical math, so what you see in the modal is exactly what gets placed.</p>
+
+            <h3>Buffering tiles before world initialisation</h3>
+            <p>The Socket.io <code>historic-tiles</code> event arrives immediately on connection — before the user passes the intro screen and before <code>initWorld()</code> runs. The solution was a <code>pendingTiles</code> buffer: tiles arriving early are queued and flushed inside <code>showMandalaScreen()</code> after the world is ready.</p>
+
+            <h3>Touch events blocking buttons on mobile</h3>
+            <p>p5.js's <code>touchStarted()</code> returning <code>false</code> calls <code>preventDefault()</code> on all touch events, intercepting button taps. The fix was to check <code>document.elementFromPoint()</code> at the touch coordinates — if the touch landed on a button or modal element, the handler returns early without consuming the event.</p>
+
+            <h3>Shared ripples without server simulation</h3>
+            <p>Running ripple physics server-side for all clients would require syncing individual segment positions — expensive and complex. Instead, only the ripple origin (x, y) is transmitted. Each client runs the same deterministic physics against that origin, producing the identical wave on every screen without any server simulation.</p>
+        </section>
+
+        <section>
+            <h2>Exhibition Context</h2>
+            <p>Naqsh was designed for physical exhibition. The recommended setup is a large projection showing the live shared canvas, with mobile devices on a table in front of it. Visitors pick up a phone, long-press anywhere, choose their angle and colour, and watch their tile appear on the wall.</p>
+            <p>Because every tile persists, the canvas accumulates over time. On the final day of an exhibition, the grid carries the marks of every visitor who came before — a geometric archive of collective presence, built from a mathematical system designed to suggest the infinite.</p>
+        </section>
+    </main>
+</body>
+</html>
