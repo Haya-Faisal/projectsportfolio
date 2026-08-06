@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fallen Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+        body { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+        /* Typography & Spacing */
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        h2 { font-size: 1.5rem; font-weight: 600; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #eaeaea; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #800020; }
+        p, li { margin-bottom: 0.8rem; }
+        a { color: #800020; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Project Links */
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 2rem 0;
+            flex-wrap: wrap;
+        }
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #800020;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(204, 0, 0, 0.08);
+            border-radius: 6px;
+            border: 1px solid rgba(204, 0, 0, 0.08);
+            transition: all 0.2s ease;
+        }
+        .project-link:hover {
+            background-color: rgba(204, 0, 0, 0.08);
+            text-decoration: none;
+        }
+
+        /* Layout Sections */
+        .back-link { display: inline-block; margin-bottom: 3rem; font-weight: 500; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0; }
+        .meta-item h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.5rem; }
+        .meta-item p { font-size: 1rem; }
+
+        /* Lists */
+        ul, ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* Code Blocks */
+        pre {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 4px solid #ddd;
+        }
+        code { font-family: 'Courier New', Courier, monospace; background: #f5f5f5; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; color: #d63384; }
+
+        /* Tech Tags */
+        .tag { display: inline-block; background: #fff0f0; color: #800020; padding: 0.3em 0.8em; border-radius: 20px; font-size: 0.85rem; margin-right: 0.5rem; margin-bottom: 0.5rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
+            .meta-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .project-links { gap: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+
+    <header>
+        <h1>Fallen Notes</h1>
+
+        <!-- Project Links -->
+        <div class="project-links">
+            <a href="https://github.com/Haya-Faisal/Fallennotes" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i> Github
+            </a>
+            <a href="https://haya-faisal.github.io/Fallennotes/" class="project-link" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Project
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="meta-grid">
+            <div class="meta-item">
+                <h4>Impact</h4>
+                <p>An interactive, physics-based Newton's cradle where clay pots swing instead of steel balls — every collision launches a synthesized musical note that falls, bounces, and piles up at the bottom of the screen, draggable by mouse or touch.</p>
+            </div>
+            <div class="meta-item">
+                <h4>Tools</h4>
+                <p>Matter.js, poly-decomp, HTML5 Canvas, Web Audio API, DeviceOrientation API</p>
+            </div>
+            <div class="meta-item">
+                <h4>Timeline</h4>
+                <p>July 2026</p>
+            </div>
+        </section>
+
+        <section id="video-section" style="width: 100%; height: 30%;">
+            <div style="max-width: 1200px;height: 50%; margin: 0 auto; padding: 0 20px;">
+                <video 
+                    autoplay 
+                    loop 
+                    muted 
+                    playsinline
+                    style="width: 100%; height: auto; ">
+                    <source src="./assets/fallennotes.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section>
+            <h2>Features</h2>
+
+            <h3>Concave Pot-Shaped Physics Bodies</h3>
+            <ul>
+                <li><strong>Custom Vertex Outline:</strong> Each pot is a hand-traced concave polygon (narrow neck, wide belly) built with <code>Bodies.fromVertices</code>.</li>
+                <li><strong>Parent-Body Resolution:</strong> Collision events return individual sub-parts, not the whole pot — all collision logic resolves to <code>body.parent</code> to work with the correct pot as a whole.</li>
+            </ul>
+
+            <h3>Collision-Triggered Musical Notes</h3>
+            <ul>
+                <li><strong>Real Physics Note Bodies:</strong> Hard pot-to-pot collisions (measured by relative velocity) spawn small circular note bodies that fall, tumble, and bounce under real gravity.</li>
+                <li><strong>Collision Filtering:</strong> Notes are set to ignore the pots entirely (so a falling note can't disturb the cradle's swing) while still colliding with the ground and each other.</li>
+                <li><strong>Boundary Walls:</strong> Invisible static walls on the left, right, and top edges keep notes from drifting off-screen.</li>
+                <li><strong>Ground Accumulation:</strong> A static floor lets notes pile up and rest realistically at the bottom of the screen.</li>
+            </ul>
+
+            <h3>Draggable Notes and Pots</h3>
+            <ul>
+                <li><strong>MouseConstraint Interaction:</strong> Both pots and settled/falling notes can be grabbed and dragged with mouse or touch.</li>
+                <li><strong>Collision Filter Compatibility:</strong> Note filters were tuned to still be visible to Matter's mouse-picking logic despite otherwise ignoring pots physically.</li>
+            </ul>
+
+            <h3>Synthesized Sound Design</h3>
+            <ul>
+                <li><strong>Web Audio API Tone Generator:</strong> No sound files — tones are synthesized live with oscillators and a quick-attack, exponential-decay envelope.</li>
+                <li><strong>Pentatonic Scale:</strong> Every emerge/land/drag sound randomly picks a note from a pentatonic scale, so overlapping sounds always stay musically consistent.</li>
+                <li><strong>Distinct Triggers:</strong> Separate sounds for a note emerging from a collision, landing on the ground, and being picked up by the mouse.</li>
+            </ul>
+
+            <h3>Device Tilt (Gyroscope) Support</h3>
+            <ul>
+                <li><strong>Tilt-Driven Gravity:</strong> Device orientation (<code>gamma</code>/<code>beta</code>) remaps <code>engine.world.gravity</code>, so loose notes roll toward whichever way the device tilts — like a ball-in-maze toy.</li>
+               <li><strong>Pots Unaffected:</strong> Pots use <code>inertia: Infinity</code> and hang from fixed string anchors, so they keep swinging normally regardless of tilt — only loose notes respond.</li>
+            </ul>
+
+            <h3>Responsive, Always-Centered Layout</h3>
+            <ul>
+                <li><strong>Full-Viewport Canvas:</strong> Canvas sizes to <code>window.innerWidth</code>/<code>innerHeight</code> and re-centers the cradle and ground on resize.</li>
+                <li><strong>Responsive Sizing:</strong> Pot and note sizes scale relative to screen width (clamped min/max) so they stay proportionate on both small phones and wide desktop screens.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Technical Stack</h2>
+            <div>
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Matter.js</span>
+                <span class="tag">poly-decomp</span>
+                <span class="tag">HTML5 Canvas</span>
+                <span class="tag">Web Audio API</span>
+                <span class="tag">DeviceOrientation API</span>
+                <span class="tag">GitHub Pages</span>
+            </div>
+
+            <h3 style="margin-top: 1.5rem;">Performance & Robustness Features</h3>
+            <ul>
+                <li><strong>Note Cap:</strong> A maximum note count removes the oldest note once exceeded, preventing unbounded body growth.</li>
+                <li><strong>Collision Category Isolation:</strong> Separate collision categories for notes vs. ground keep physics interactions cheap and predictable.</li>
+             </ul>
+        </section>
+
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <h3>Concave Pot Body Construction</h3>
+            <pre><code>function potVertices(size) {
+  var points = [
+    { x: 0.45, y: 0 }, { x: 0.55, y: 0.05 }, { x: 0.5, y: 0.1 },
+    { x: 0.35, y: 0.18 }, { x: 0.4, y: 0.28 }, { x: 0.6, y: 0.4 },
+    // ...traces the pot's neck-in, belly-out silhouette
+  ];
+  return points.map(function (p) {
+    return { x: p.x * size, y: p.y * size };
+  });
+}
+
+var pot = Bodies.fromVertices(x, y, [potVertices(size)], {
+  inertia: Infinity,
+  restitution: 1,
+  friction: 0,
+  frictionAir: 0
+});</code></pre>
+
+
+            <h3>Self-Collision Fix (Compound Body Parts)</h3>
+            <pre><code>Events.on(engine, "collisionStart", function (event) {
+  event.pairs.forEach(function (pair) {
+    var a = pair.bodyA.parent || pair.bodyA;
+    var b = pair.bodyB.parent || pair.bodyB;
+
+    // skip a pot colliding with its own internal decomposed parts
+    if (a === b) return;
+
+    var relSpeed = Vector.magnitude(Vector.sub(a.velocity, b.velocity));
+    if (relSpeed >= IMPACT_THRESHOLD) spawnNote(/* ... */);
+  });
+});</code></pre>
+
+            <h3>Synthesized Sound (Web Audio API)</h3>
+            <pre><code>function playTone(frequency, duration, type, volume) {
+  var ctx = getAudioContext();
+  var osc = ctx.createOscillator();
+  var gain = ctx.createGain();
+
+  osc.type = type;
+  osc.frequency.value = frequency;
+  gain.gain.setValueAtTime(volume, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + duration);
+}
+
+var PENTATONIC = [261.63, 293.66, 329.63, 392.0, 440.0, 523.25, 587.33, 659.25];</code></pre>
+
+            <h3>Gyroscope-Driven Gravity</h3>
+            <pre><code>function handleOrientation(event) {
+  var gamma = event.gamma || 0; // left-right tilt
+  var beta = event.beta || 0;   // front-back tilt
+
+  __activeEngine.world.gravity.x = Math.max(-1, Math.min(1, gamma * TILT_SENSITIVITY));
+  __activeEngine.world.gravity.y = Math.max(0.2, Math.min(1.5, 1 + beta * TILT_SENSITIVITY * 0.3));
+}
+
+function requestOrientation() {
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission().then(function (state) {
+      if (state === "granted") {
+        window.addEventListener("deviceorientation", handleOrientation, true);
+      }
+    });
+  } else {
+    window.addEventListener("deviceorientation", handleOrientation, true);
+  }
+}</code></pre>
+
+        </section>
+
+        <section>
+            <h2>Challenges & Solutions</h2>
+
+            <h3>Challenge: Collision Speed Always Read as Zero</h3>
+            <p><strong>Solution:</strong> Concave pot bodies get split into multiple convex parts internally by poly-decomp. Collision events were frequently firing between a pot's own internal parts, giving identical velocities and a relative speed of exactly zero. Fixed by resolving every collision pair to <code>body.parent</code> and skipping pairs where both sides resolved to the same body.</p>
+
+            <h3>Challenge: Notes Couldn't Be Picked Up With the Mouse</h3>
+            <p><strong>Solution:</strong> <code>MouseConstraint</code> checks collision-filter compatibility before allowing a grab, not just body-body physics. The notes' restrictive filter (added so they'd ignore pots mid-fall) accidentally excluded the mouse's default category too. Fixed by explicitly including the default category bit in the notes' collision mask.</p>
+
+            <h3>Challenge: Cradle Not Staying Centered on Resize</h3>
+            <p><strong>Solution:</strong> Pot positions were fixed at creation time and didn't move with the window. Solved by calculating the delta between the old and new center on resize and translating every pot body and string anchor by that same offset.</p>
+
+            <h3>Challenge: Gyroscope Button Scope Errors</h3>
+            <p><strong>Solution:</strong> The tilt-request function was originally trapped inside the cradle's local function scope, so an HTML button's <code>onclick</code> couldn't reach it. Moved <code>requestOrientation()</code> and <code>handleOrientation()</code> to global scope, tracking the active physics engine via a module-level reference.</p>
+
+            <h3>Challenge: Pots and Notes Too Small on Mobile</h3>
+            <p><strong>Solution:</strong> Fixed pixel sizes looked disproportionately small on narrow phone screens. Solved by scaling pot and note sizes relative to <code>window.innerWidth</code>, clamped within sensible min/max bounds.</p>
+        </section>
+
+        <section>
+            <h2>Deployment Architecture</h2>
+            <pre><code>Static Site Deployment:
+Browser Request
+    ↓
+GitHub Pages (index.html, balls.js, assets/)
+    ↓
+CDN (Matter.js, poly-decomp)
+    ↓
+Client-Side Physics + Web Audio + DeviceOrientation
+    ↓
+Canvas Rendering (no backend server required)</code></pre>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backLink = document.querySelector('.back-link');
+            if (!document.referrer) {
+                backLink.href = "/"; // Change to your actual portfolio homepage URL
+                backLink.textContent = "← Back to Portfolio";
+            }
+        });
+    </script>
+</body>
+</html>
