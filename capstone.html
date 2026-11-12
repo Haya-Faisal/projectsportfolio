@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Beyond the Zahir</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg: #fff;
+        --ink: #1a1a1a;
+        --muted: #666;
+        --line: #eaeaea;
+        --soft: #f5f5f5;
+        --accent: #800020;
+        --tint: rgba(128, 0, 32, 0.07);
+        --tintline: rgba(128, 0, 32, 0.18);
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #141414;
+          --ink: #ececec;
+          --muted: #a0a0a0;
+          --line: #2c2c2c;
+          --soft: #1f1f1f;
+          --accent: #e8758f;
+          --tint: rgba(232, 117, 143, 0.1);
+          --tintline: rgba(232, 117, 143, 0.28);
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #141414;
+        --ink: #ececec;
+        --muted: #a0a0a0;
+        --line: #2c2c2c;
+        --soft: #1f1f1f;
+        --accent: #e8758f;
+        --tint: rgba(232, 117, 143, 0.1);
+        --tintline: rgba(232, 117, 143, 0.28);
+        color-scheme: dark;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+        scroll-padding-top: calc(
+          env(safe-area-inset-top, 0px) + var(--barh, 56px) + 8px
+        );
+      }
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 24px;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0 0 auto;
+        height: env(safe-area-inset-top, 0px);
+        background: var(--bg);
+        z-index: 30;
+      }
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        color: var(--accent);
+      }
+      p,
+      li {
+        margin-bottom: 0.8rem;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.15rem;
+        margin-bottom: 0;
+      }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 3rem;
+        font-weight: 500;
+      }
+      .project-links {
+        display: flex;
+        gap: 1rem;
+        margin: 1rem 0 2rem;
+        flex-wrap: wrap;
+      }
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--accent);
+        font: inherit;
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+        background: var(--tint);
+        border-radius: 6px;
+        border: 1px solid var(--tintline);
+        cursor: pointer;
+      }
+      .project-link:hover {
+        text-decoration: none;
+        filter: brightness(0.97);
+      }
+      .meta-item h4 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        margin-bottom: 0.5rem;
+      }
+      ul,
+      ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .tabbar {
+        position: sticky;
+        top: env(safe-area-inset-top, 0px);
+        z-index: 40;
+        background: var(--bg);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        margin: 0 -24px 2rem;
+        padding: 0 24px;
+      }
+      .tabbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 0.4rem;
+      }
+      .tabbar li {
+        margin: 0;
+      }
+      .tabbar a {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--ink);
+        border-bottom: 2px solid transparent;
+        padding: 0.85rem 0.6rem;
+      }
+      .tabbar a:hover {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      .tabbar li.current a {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+        font-weight: 600;
+      }
+      .tab p,
+      .tab li {
+        max-width: 760px;
+      }
+      .tab[hidden] {
+        display: none;
+      }
+      .box {
+        background: var(--soft);
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        border-left: 4px solid var(--line);
+      }
+      .box p:last-child {
+        margin-bottom: 0;
+      }
+      .fig {
+        background: var(--bg);
+        border-radius: 8px;
+        padding: 1rem 1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .tag {
+        display: inline-block;
+        background: var(--tint);
+        color: var(--accent);
+        padding: 0.3em 0.8em;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      blockquote {
+        margin: 1.5rem 0;
+        padding-left: 1.2rem;
+        border-left: 4px solid var(--accent);
+        color: var(--muted);
+        max-width: 760px;
+      }
+      code {
+        font-family: "Courier New", Courier, monospace;
+        background: var(--soft);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-size: 0.9em;
+        color: var(--accent);
+      }
+      .pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        max-width: 760px;
+      }
+      .pair div {
+        background: var(--soft);
+        border-radius: 8px;
+        padding: 1rem 1.2rem;
+      }
+      .pair p {
+        margin: 0;
+      }
+      .pair strong {
+        display: block;
+        color: var(--accent);
+      }
+      ol.refs {
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 30px 20px;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .tabbar {
+          margin: 0 -20px 1.5rem;
+          padding: 0 20px;
+        }
+        .tabbar a {
+          padding: 0.7rem 0.4rem;
+          font-size: 0.88rem;
+        }
+        .pair {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="back-link"
+      ><i class="fas fa-arrow-left"></i> Back</a
+    >
+
+    <header>
+      <h1>Beyond the Zahir</h1>
+      <p class="subtitle">
+        Islamic geometric patterns as pre-digital generative systems
+      </p>
+      <div class="project-links">
+        <a
+          href="https://docs.google.com/document/d/1ZA87A4aoF45_rz8B_ss-ZOzmvSeaG9v9aRD3OMuRp6k/edit?usp=sharing"
+          class="project-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fas fa-file-lines"></i> Full Paper
+        </a>
+      </div>
+    </header>
+
+    <nav class="tabbar" aria-label="Capstone sections">
+      <ul>
+        <li data-tab="overview"><a href="#overview">Overview</a></li>
+        <li data-tab="igp"><a href="#igp">IGP</a></li>
+        <li data-tab="ga"><a href="#ga">GA</a></li>
+        <li data-tab="analysis">
+          <a href="#analysis">Comparative Analysis</a>
+        </li>
+        <li data-tab="conclusion"><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="tab" id="overview">
+        <h2>Overview</h2>
+        <h3 id="abstract">Abstract</h3>
+        <p>
+          This paper argues that Islamic Geometric Patterns (IGPs) can be
+          understood as a pre-digital algorithm. Drawing on Laura Marks’ concept
+          of enfoldment and infinity, Wilhelm Worringer’s theory of abstraction,
+          and Keith Critchlow’s writing on sacred geometry, it shows how IGPs
+          transform finite geometric rules into complex, infinite patterns.
+        </p>
+        <p>
+          Through a historical and theoretical comparison, it shows that IGPs
+          and Generative Art (GA) both rely on repetition, symmetry,
+          abstraction, and procedural logic rather than imitation of nature. It
+          also separates generative art from generative AI by stressing
+          artist-defined systems that govern output. Finally, a p5.js prototype
+          translates polygon-based construction methods into code.
+        </p>
+        <p>
+          <span class="tag">Islamic geometric patterns</span
+          ><span class="tag">Generative Art</span
+          ><span class="tag">abstraction</span><span class="tag">aniconism</span
+          ><span class="tag">Zahir and Batin</span>
+        </p>
+
+        <h3 id="introduction">Introduction</h3>
+        <p>
+          Through the centuries, artists have discovered that simple rules can
+          generate complex visuals. From the interlocking star patterns of
+          mosques to flowing algorithmic landscapes, IGP and GA share one
+          principle: turning finite mathematical constraints into infinite
+          visual possibility. I argue that IGP is a pre-digital algorithm, in
+          which compass-constructed grids unfold endless patterns, much as
+          modern code generates autonomous ones.
+        </p>
+        <p>
+          Marks examines the link between Islamic art and computational art in
+          <em>Enfoldment and Infinity</em>. Building on her, I also draw on
+          Worringer’s “urge to abstraction” (1908), which explains why geometric
+          order offers stability amid natural chaos, and on Critchlow, who
+          connects IGP to sacred geometry and reads its avoidance of figures as
+          a way of revealing unity and infinite order.
+        </p>
+        <p>
+          The paper moves through four parts: the history of IGP, the emergence
+          of GA, a comparative analysis, and a prototype that combines the two.
+          It addresses a gap: GA scholarship overlooks pre-digital precedents,
+          while studies of Islamic art rarely engage modern media theory.
+        </p>
+
+        <h3 id="zahir-batin">Zahir and Batin</h3>
+        <p>
+          Following Marks, I use two Islamic concepts for what we see and what
+          lies beneath it.
+        </p>
+        <div class="pair">
+          <div>
+            <p>
+              <strong>Zahir (ظاهر)</strong>The outer, the visible. The surface
+              of the pattern, the image we perceive.
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>Batin (باطن)</strong>The hidden. The mathematical
+              structure, or the code, enfolded inside the surface.
+            </p>
+          </div>
+        </div>
+        <p>
+          The visible surface of an IGP enfolds a hidden mathematical pattern,
+          just as a GA image unfolds infinite variations from a single
+          algorithmic seed. Try it below: the pattern you see is drawn from the
+          circles and polygons underneath.
+        </p>
+      </section>
+
+      <section class="tab" id="igp" hidden>
+        <h2>Islamic Geometric Patterns</h2>
+        <p>
+          IGPs are a geometric system defined by a continuous network of
+          overlapping stars and polygons, governed by strict symmetry and
+          systematic repetition. They range from simple to multi-level designs,
+          in two or three dimensions (Azari et al. 2023). The primary tools were
+          a straight-edge and a compass (Abdullahi and Embi 2013).
+        </p>
+
+        <h3 id="igp-history">Historical development</h3>
+        <p>
+          IGPs entered the Islamic world in the seventh century, during the
+          expansion of the Islamic empires into Byzantine, Coptic, and Sassanian
+          lands (Bonner 2017). They grew with advances in science and technology
+          across the Middle East, Iran, and Central Asia in the eighth and ninth
+          centuries.
+        </p>
+        <p>
+          The history is one of simplicity moving toward complexity. Early
+          designs could be made by point-to-point configurations or basic grid
+          tracing, and it is often impossible to know which was used. As
+          complexity rose, the polygon technique emerged in the twelfth century.
+          It has four families: three defined by the angle at which pattern
+          lines intersect (acute, median, obtuse), and a fourth, the two-point
+          family, which places lines on two points of each polygon edge.
+        </p>
+        <div class="fig">
+          <img src="assets/capstone/Bonner.png" />
+        </div>
+
+        <h3 id="igp-examples">Shah Nematollah Vali and the Louvre Abu Dhabi</h3>
+        <p>
+          The dome of the Shah Nematollah Vali Shrine (1431) uses the two-point
+          polygon technique to generate an ascending sequence of 5-, 7-, 9-,
+          12-, 11-, and 10-pointed stars from a single polygonal grid.
+        </p>
+        <p>
+          The roof of the Louvre Abu Dhabi carries the logic into the present.
+          Designed by Jean Nouvel, it uses an eight-layer system in which each
+          unit is a star made from a square surrounded by four triangles. Each
+          layer is scaled and rotated differently, producing more than 400,000
+          geometric intersections (Buro Happold).
+        </p>
+        <div class="fig">
+          <img src="assets/capstone/shrine.png" />
+        </div>
+
+        <h3 id="igp-abstraction">Abstraction as method</h3>
+        <p>
+          IGP is an instance of aniconism: art that does not directly represent
+          natural objects. This lines up with Worringer’s “urge to abstraction”,
+          the use of geometry to find calm in a chaotic world. Worringer treats
+          abstraction as a psychological need; in IGP it also works as a
+          practical methodology.
+        </p>
+        <p>
+          A craftsman with a grid can draw the same pattern on a coin or on a
+          500-foot dome without losing proportion. The grid is a blueprint that
+          makes complex art repeatable, which is why I read IGP as a system of
+          logic rather than decoration.
+        </p>
+        <div class="box">
+          <p>
+            <strong>Pre-digital algorithm:</strong> initial geometric
+            constraints are set, then the pattern expands by mathematical
+            functions rather than continuous artistic intervention. As Galanter
+            (2003) notes, complex visuals can emerge automatically from the
+            systematic repetition of simple units.
+          </p>
+        </div>
+      </section>
+
+      <section class="tab" id="ga" hidden>
+        <h2>Generative Art</h2>
+        <p>
+          Galanter (2003) defines generative art as any practice in which the
+          artist uses a system, such as natural-language rules, a program, or a
+          machine, that runs with some autonomy and contributes to or produces a
+          finished work.
+        </p>
+        <p>
+          It should not be confused with generative AI. An AI system is not
+          fully under the artist’s control, and the artist does not define the
+          underlying algorithm. A tool like Midjourney takes a short phrase as
+          its request (Parker 2025). This paper is about generative art only.
+        </p>
+        <p>
+          Generative art is defined by process, not by a visual style (Parker
+          2025). That is why not all computer-made art counts: an illustration
+          made in Photoshop is digital but has no autonomous, programmable
+          system governing its creation. Randomness and interactivity are
+          allowed, as long as they stay inside the framework the artist defines.
+        </p>
+
+        <h3 id="ga-history">From cybernetics to code</h3>
+        <p>
+          The field grew from cybernetics and general systems theory, which
+          moved artistic creation from the static object to the dynamic process.
+          In the 1960s Roy Ascott called it “a cybernetic vision”, and the early
+          digital computer was suited to executing exact logical instructions
+          (Boden and Edmonds 2009).
+        </p>
+        <p>
+          In 1965 Georg Nees showed <em>Generative Computergraphik</em>, one of
+          the first formal uses of the term, and Nees and Frieder Nake exhibited
+          computer graphics in Stuttgart the same year. Manfred Mohr began
+          making program-drawn works in 1968 and called them generative art.
+        </p>
+        <div class="fig">
+          <img src="assets/capstone/eckert.png" />
+        </div>
+
+        <h3 id="ga-today">Hobbs and Reas</h3>
+        <p>
+          Casey Reas’ <em>Process 18</em> (2006) uses Processing code to direct
+          thousands of particles by repulsion rules, forming organic networks
+          that evolve in real time. Tyler Hobbs’ <em>Fidenza</em> generates
+          thousands of flowing lines from simple curving algorithms, and its
+          complexity comes from repetition.
+        </p>
+        <p>
+          Both work mostly with abstract, non-figurative forms, which parallels
+          aniconic approaches in other traditions and leads into the comparison.
+        </p>
+        <div class="fig">
+          <img src="assets/capstone/fidenza.png" />
+        </div>
+      </section>
+
+      <section class="tab" id="analysis" hidden>
+        <h2>Comparative Analysis</h2>
+        <p>
+          IGP and GA come from different periods and origins, yet in both the
+          artist writes a system of rules that governs the outcome (Galanter
+          2003). Once the rules exist, complexity emerges through repetition,
+          symmetry, and iteration rather than manual work. The work is the
+          product of a procedural logic, not a single fixed result. That
+          positions IGP as a pre-digital algorithm and GA as its computational
+          successor.
+        </p>
+
+        <h3 id="an-three">Image, Information, Infinite</h3>
+        <p>Marks names three connections between the two traditions.</p>
+        <div class="pair">
+          <div>
+            <p><strong>Image</strong>The art we perceive.</p>
+          </div>
+          <div>
+            <p>
+              <strong>Information</strong>The underlying structure: code in GA,
+              mathematical construction in IGP.
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>The Infinite in GA</strong>The endless possibilities the
+              code can generate.
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>The Infinite in IGP</strong>Rooted in the infinite
+              knowledge and power of God.
+            </p>
+          </div>
+        </div>
+
+        <h3 id="an-unfolding">Unfolding and enfolding</h3>
+        <p>
+          For Marks, unfolding is how an artwork reveals its structure as we
+          engage with it. Enfolding is how information stays hidden inside the
+          work and forms the visible surface. Surface, image, and information
+          belong to the Zahir; hidden potential, infinity, and deeper
+          interpretation belong to the Batin.
+        </p>
+        <p>
+          Zarah Hussain’s <em>Geometric Light</em> carries IGP principles into
+          algorithms, animation, and programmable light. The visuals are the
+          Zahir and the code is the Batin, and the output is performative: it
+          unfolds slowly over time. Nees and Nake’s plotter drawings work the
+          same way, since the final result cannot be known in advance. Hamid
+          Naderi Yeganeh’s trigonometric patterns grow and shift as the
+          algorithm runs, and never repeat.
+        </p>
+        <div class="fig">
+          <img src="assets/capstone/igp.png" />
+        </div>
+        <p>
+          Critchlow argues that every Islamic pattern begins with a single
+          compass point. From it comes a circle, and from the circle a square,
+          triangle, or hexagon. Marks reads that point as the Infinite: from
+          unity arises infinity. In GA the point is the seed, and a single line
+          of code can grow a forest of digital trees. In the mihrab of the
+          Sultan Hassan Mosque, interlocking shapes refuse to end at the border
+          and seem to continue into an unseen field.
+        </p>
+        <div class="fig">
+          <img src="assets/capstone/ga.png" />
+        </div>
+        <p>
+          John Simon’s web work <em>Unfolding Object</em> (2002) shows the same
+          relation: pages unfold as users click, and creases mark pages previous
+          users have opened, while others stay enfolded and out of sight.
+        </p>
+
+        <h3 id="an-aniconism">Aniconism</h3>
+        <p>
+          For Critchlow, IGP avoids figures because geometry can express unity,
+          harmony, and the infinite order of creation without images of people
+          or animals. Aniconism is not only a refusal of images, but a way of
+          revealing a higher order through pattern and proportion. GA reaches
+          aniconism more naturally: Hobbs’ <em>Fidenza</em> is curves and lines,
+          and Vera Molnár’s permutations are squares and lines.
+        </p>
+
+        <h3 id="an-gap">The cultural gap</h3>
+        <p>
+          The two differ in what grounds them. IGP is built with precision and
+          rooted in <em>tawhid</em>, the unity of God, where repetition and
+          symmetry stand for an infinite unified order. GA comes from
+          twentieth-century computing, cybernetics, and systems theory, and
+          cares mainly about process, experimentation, and system behavior.
+        </p>
+        <p>
+          Can the gap be bridged, with technology and spiritual experience in
+          constructive interplay? Contemporary artists like Hussain are doing it
+          by pairing IGP’s symbolic depth with GA’s technical capacity.
+        </p>
+
+        <h3 id="prototype">Prototype</h3>
+        <p>
+          To test the argument, I built a p5.js sketch that recreates the
+          twelfth-century polygon technique as performative art. It implements a
+          two-point family construction, where lines connect at equidistant
+          points along polygon edges. Layered star polygons (10-, 12-, and
+          14-point) morph between acute, median, and obtuse layouts across six
+          rotating levels, like the layers of the Louvre Abu Dhabi dome.
+        </p>
+        <p>
+          <code>drawStarPattern()</code> draws intersection lines at 33% and 67%
+          along each edge, following Bonner. Trails, morphing, and rotation mean
+          no frame repeats. The unity at the algorithm’s center, the Batin,
+          keeps surfacing as pattern, the Zahir. The sketch lays the groundwork
+          for Capstone 2.
+        </p>
+        <div class="fig">
+          <video
+            src="assets/capstone/mysketch.mp4"
+            width="500"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+      </section>
+
+      <section class="tab" id="conclusion" hidden>
+        <h2>Conclusion</h2>
+        <p>
+          IGP and GA emerged in very different periods and look different, yet
+          both put process before result. In both, the artist sets a system of
+          rules that governs the outcome. The analysis shows that they are
+          structurally similar, not only visually: IGP grew from simple grids to
+          the polygon technique and its four families, and GA extends that logic
+          computationally, with artist-defined algorithms producing autonomous
+          complexity, as in the work of Hobbs and Reas.
+        </p>
+        <p>
+          Worringer’s urge to abstraction explains the psychological pull of
+          both. Critchlow gives aniconism a positive meaning as a principle of
+          sacred geometry. Marks’ unfolding and enfolding show how the Batin and
+          the Zahir are held together in both traditions.
+        </p>
+        <p>
+          Generative thinking predates digital technology. This widens GA’s
+          genealogy beyond 1960s cybernetics to include Islamic mathematical
+          traditions, and it makes IGP a living method for contemporary design.
+          Whether traced with a compass or rendered in code, procedural
+          abstraction shows that simple geometric rules hold infinite creative
+          possibility.
+        </p>
+
+        <h3 id="references">References</h3>
+        <ol class="refs">
+          <li>
+            Abdullahi, Yahya, and Mohamed Rashid Bin Embi. “Evolution of Islamic
+            Geometric Patterns.” <em>Frontiers of Architectural Research</em> 2,
+            no. 2 (2013): 243–251.
+          </li>
+          <li>
+            Azari, Ranjbar, et al. “Application-Based Principles of Islamic
+            Geometric Patterns.” <em>Heritage Science</em> 11 (2023), article
+            22.
+          </li>
+          <li>
+            Boden, Margaret A., and Ernest A. Edmonds. “What Is Generative Art?”
+            <em>Digital Creativity</em> 20, no. 1–2 (2009): 21–46.
+          </li>
+          <li>
+            Bonner, Jay. <em>Islamic Geometric Patterns.</em> New York:
+            Springer, 2017.
+          </li>
+          <li>Buro Happold. “Louvre Abu Dhabi: Dome.”</li>
+          <li>
+            Critchlow, Keith.
+            <em>Islamic Patterns: An Analytical and Cosmological Approach.</em>
+            London: Thames and Hudson, 1976.
+          </li>
+          <li>
+            Galanter, Philip. “What Is Generative Art?” Generative Art 2003,
+            Milan.
+          </li>
+          <li>Hobbs, Tyler. “Fidenza.”</li>
+          <li>
+            Lu, Peter J., et al. “Decagonal and Quasi-Crystalline Tilings in
+            Medieval Islamic Architecture.” <em>Science</em> 315 (2007):
+            1106–10.
+          </li>
+          <li>
+            Marks, Laura U.
+            <em
+              >Enfoldment and Infinity: An Islamic Genealogy of New Media
+              Art.</em
+            >
+            MIT Press, 2011.
+          </li>
+          <li>
+            Parker, J. <em>Generative Art and Computer Vision.</em> Apress,
+            2025.
+          </li>
+          <li>
+            Simon Jr., John F. “Unfolding Object.” Guggenheim Museum, 2002.
+          </li>
+          <li>
+            Worringer, Wilhelm. <em>Abstraction and Empathy.</em> Ivan R. Dee,
+            1997.
+          </li>
+        </ol>
+        <p>
+          With thanks to my advisor, Professor Laura Tripaldi, and to my family
+          for their love, prayers, and encouragement.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var root = document.documentElement,
+          bar = document.querySelector(".tabbar"),
+          tabs = [].slice.call(document.querySelectorAll(".tab")),
+          dds = [].slice.call(document.querySelectorAll(".tabbar li"));
+        var back = document.querySelector(".back-link");
+        if (!document.referrer) {
+          back.href = "/";
+          back.textContent = "← Back to Portfolio";
+        }
+        function setBar() {
+          root.style.setProperty("--barh", bar.offsetHeight + "px");
+        }
+        dds.forEach(function (d) {
+          d.firstElementChild.addEventListener("click", function () {
+            if (
+              location.hash === "#" + d.dataset.tab ||
+              (!location.hash && d.dataset.tab === "overview")
+            )
+              route();
+          });
+        });
+
+        var first = true;
+        function route() {
+          var id = location.hash.slice(1) || "overview",
+            el = document.getElementById(id),
+            tab = el && el.closest(".tab");
+          if (!tab) {
+            tab = tabs[0];
+            el = null;
+          }
+          tabs.forEach(function (t) {
+            t.hidden = t !== tab;
+          });
+          dds.forEach(function (d) {
+            d.classList.toggle("current", d.dataset.tab === tab.id);
+          });
+          setBar();
+          sizeCv();
+          if (first && !location.hash) {
+            first = false;
+            return;
+          }
+          first = false;
+          (el || tab).scrollIntoView({ behavior: "instant", block: "start" });
+        }
+        window.addEventListener("hashchange", route);
+        window.addEventListener("resize", function () {
+          setBar();
+          sizeCv();
+        });
+
+        var cv = document.getElementById("cv"),
+          ctx = cv.getContext("2d"),
+          rv = document.getElementById("rv"),
+          batin = false;
+        var layers = [
+          [8, 3, 0.92],
+          [10, 3, 0.8],
+          [12, 5, 0.68],
+          [14, 5, 0.56],
+          [12, 4, 0.44],
+          [10, 3, 0.32],
+        ];
+        var still = window.matchMedia(
+          "(prefers-reduced-motion:reduce)",
+        ).matches;
+        function sizeCv() {
+          var w = cv.clientWidth;
+          if (!w) return;
+          var d = window.devicePixelRatio || 1;
+          cv.width = w * d;
+          cv.height = w * d;
+          ctx.setTransform(d, 0, 0, d, 0, 0);
+          if (still) draw(0);
+        }
+        function col(n) {
+          return getComputedStyle(root).getPropertyValue(n).trim();
+        }
+        function draw(t) {
+          var w = cv.clientWidth;
+          if (w) {
+            var R = (w / 2) * 0.96,
+              ink = col("--ink"),
+              acc = col("--accent");
+            ctx.clearRect(0, 0, w, w);
+            ctx.save();
+            ctx.translate(w / 2, w / 2);
+            ctx.lineWidth = 1.2;
+            layers.forEach(function (L, i) {
+              var n = L[0],
+                k = L[1],
+                r = L[2] * R,
+                rot =
+                  (still ? 0 : t * 0.00007) * (i % 2 ? 1 : -1) +
+                  i * 0.21 -
+                  Math.PI / 2,
+                p = [];
+              for (var j = 0; j < n; j++) {
+                var a = rot + (j * 2 * Math.PI) / n;
+                p.push([Math.cos(a) * r, Math.sin(a) * r]);
+              }
+              if (batin) {
+                ctx.setLineDash([3, 5]);
+                ctx.strokeStyle = acc;
+                ctx.globalAlpha = 0.8;
+                ctx.beginPath();
+                ctx.arc(0, 0, r, 0, 7);
+                ctx.stroke();
+                ctx.beginPath();
+                p.forEach(function (q, j) {
+                  j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]);
+                });
+                ctx.closePath();
+                ctx.stroke();
+                ctx.setLineDash([]);
+              }
+              ctx.strokeStyle = ink;
+              ctx.globalAlpha = batin ? 0.3 : Math.max(0.35, 0.95 - i * 0.1);
+              ctx.beginPath();
+              for (var j = 0; j < n; j++) {
+                var a = p[j],
+                  b = p[(j + k) % n];
+                ctx.moveTo(a[0], a[1]);
+                ctx.lineTo(b[0], b[1]);
+              }
+              ctx.stroke();
+            });
+            ctx.restore();
+            ctx.globalAlpha = 1;
+          }
+          if (!still) requestAnimationFrame(draw);
+        }
+        rv.addEventListener("click", function () {
+          batin = !batin;
+          rv.setAttribute("aria-pressed", batin);
+          rv.querySelector("span").textContent = batin
+            ? "Hide the Batin"
+            : "Reveal the Batin";
+          if (still) draw(0);
+        });
+        route();
+        requestAnimationFrame(draw);
+      })();
+    </script>
+  </body>
+</html>
